@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs – DatamatrixAI</title>
+    <meta name="description" content="Insights, research, and thinking on enterprise AI from the DatamatrixAI team.">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/blogs.css">
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="images/logo.png" alt="DataMatrix Logo" class="logo">
+            <div class="logo-text">
+                <span class="text-white">Datamatrix</span><span class="text-white">.AI</span>
+                <div class="tagline-text">Make AI work. Responsibly</div>
+            </div>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#products">Products</a></li>
+                <li><a href="index.html#testimonials">Results</a></li>
+                <li><a href="index.html#careers">Careers</a></li>
+                <li><a href="blogs.html" class="nav-active">Blogs</a></li>
+                <li><a href="index.html#aboutus">About Us</a></li>
+            </ul>
+        </nav>
+        <a href="index.html#contact" class="btn-reach">Contact Us</a>
+    </header>
+
+    <section class="blogs-hero">
+        <div class="blogs-hero-inner">
+            <p class="blogs-label">From the team</p>
+            <h1>Insights & <span class="highlight">Ideas</span></h1>
+            <p class="blogs-hero-sub">Thinking on enterprise AI, responsible deployment, and what's next in the field.</p>
+        </div>
+    </section>
+
+    <section class="blogs-section">
+        <div class="blogs-container">
+
+            <!-- FILTER BAR -->
+            <div class="blogs-filter-bar">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="strategy">Strategy</button>
+                <button class="filter-btn" data-filter="engineering">Engineering</button>
+                <button class="filter-btn" data-filter="research">Research</button>
+                <button class="filter-btn" data-filter="product">Product</button>
+            </div>
+
+            <!-- BLOG GRID — add new cards at the TOP, oldest at the bottom -->
+            <div class="blogs-grid" id="blogsGrid">
+
+                <!-- =============================================
+                     HOW TO ADD A NEW BLOG POST:
+                     1. Copy one .blog-card block below
+                     2. Paste it ABOVE all existing cards (so it appears first)
+                     3. Update: data-category, date, read-time, title, excerpt, tags, and the href on the Read button
+                     4. Create a matching entry in blog-post.html (see that file for instructions)
+                ============================================= -->
+
+                <!-- BLOG CARD 1 — Latest -->
+                <article class="blog-card" data-category="strategy">
+                    <div class="blog-card-top">
+                        <div class="blog-meta">
+                            <span class="blog-date"><i class="fas fa-calendar-alt"></i> June 2025</span>
+                            <span class="blog-read-time"><i class="fas fa-clock"></i> 6 min read</span>
+                        </div>
+                        <span class="blog-category-badge strategy">Strategy</span>
+                    </div>
+                    <h2 class="blog-title">Why Most Enterprise AI Projects Fail Before They Start</h2>
+                    <p class="blog-excerpt">The biggest obstacle to AI adoption isn't the technology — it's the absence of a clear problem worth solving. Here's how we help enterprises define the right AI use cases before writing a single line of code.</p>
+                    <div class="blog-tags">
+                        <span class="blog-tag">AI Strategy</span>
+                        <span class="blog-tag">Enterprise</span>
+                        <span class="blog-tag">Consulting</span>
+                    </div>
+                    <a href="blog-post.html?id=1" class="blog-read-btn">
+                        Read Article <i class="fas fa-arrow-right"></i>
+                    </a>
+                </article>
+
+                <!-- BLOG CARD 2 -->
+                <article class="blog-card" data-category="engineering">
+                    <div class="blog-card-top">
+                        <div class="blog-meta">
+                            <span class="blog-date"><i class="fas fa-calendar-alt"></i> May 2025</span>
+                            <span class="blog-read-time"><i class="fas fa-clock"></i> 8 min read</span>
+                        </div>
+                        <span class="blog-category-badge engineering">Engineering</span>
+                    </div>
+                    <h2 class="blog-title">RAG vs Fine-Tuning: Choosing the Right Approach for Your LLM</h2>
+                    <p class="blog-excerpt">Both RAG and fine-tuning can ground an LLM in your company's knowledge — but they solve different problems. We break down when to use each, with real examples from our enterprise deployments.</p>
+                    <div class="blog-tags">
+                        <span class="blog-tag">LLMs</span>
+                        <span class="blog-tag">RAG</span>
+                        <span class="blog-tag">MLOps</span>
+                    </div>
+                    <a href="blog-post.html?id=2" class="blog-read-btn">
+                        Read Article <i class="fas fa-arrow-right"></i>
+                    </a>
+                </article>
+
+
+            </div><!-- /blogs-grid -->
+
+            <!-- Empty state (shown by JS when filter has no matches) -->
+            <div class="blogs-empty" id="blogsEmpty" style="display:none;">
+                <i class="fas fa-folder-open"></i>
+                <p>No posts in this category yet. Check back soon.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-col company-info">
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="DataMatrix AI Logo" class="logo-img">
+                    <h2>Datamatrix<span class="highlight">.AI</span></h2>
+                </div>
+                <p class="company-desc">Transforming businesses through innovative AI solutions that drive growth, efficiency, and competitive advantage.</p>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/company/datamatrixai-in/"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#testimonials">Results</a></li>
+                    <li><a href="index.html#careers">Careers</a></li>
+                    <li><a href="blogs.html">Blogs</a></li>
+                    <li><a href="index.html#aboutus">About Us</a></li>
+                    <li><a href="index.html#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-heading">Our Products</h3>
+                <ul class="footer-links">
+                    <li><a href="#">EDIS – AI-powered BI</a></li>
+                    <li><a href="#">BoQx – AI-powered image extraction</a></li>
+                </ul>
+            </div>
+            <div class="footer-col newsletter-col">
+                <h3 class="footer-heading">Newsletter</h3>
+                <p class="newsletter-desc">Subscribe to receive updates on the latest AI trends.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your Email Address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright">&copy; 2025 DataMatrixai. All rights reserved.</div>
+            <div class="legal-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Category filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.blog-card');
+        const emptyState = document.getElementById('blogsEmpty');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+                let visible = 0;
+
+                cards.forEach(card => {
+                    const match = filter === 'all' || card.dataset.category === filter;
+                    card.style.display = match ? 'flex' : 'none';
+                    if (match) visible++;
+                });
+
+                emptyState.style.display = visible === 0 ? 'block' : 'none';
+            });
+        });
+    </script>
+
+</body>
+</html>

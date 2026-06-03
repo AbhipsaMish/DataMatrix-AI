@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Blog – DatamatrixAI</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/blogs.css">
+</head>
+<body>
+
+    <header>
+        <a href="index.html" class="logo-container">
+            <img src="images/logo.png" alt="DataMatrix Logo" class="logo">
+            <div class="logo-text">
+                <span class="text-white">Datamatrix</span><span class="text-white">.AI</span>
+                <div class="tagline-text">Make AI work. Responsibly</div>
+            </div>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#products">Products</a></li>
+                <li><a href="index.html#testimonials">Results</a></li>
+                <li><a href="index.html#careers">Careers</a></li>
+                <li><a href="blogs.html" class="nav-active">Blogs</a></li>
+                <li><a href="index.html#aboutus">About Us</a></li>
+            </ul>
+        </nav>
+        <a href="index.html#contact" class="btn-reach">Contact Us</a>
+    </header>
+
+    <main class="post-main" id="postMain">
+        <!-- Filled by JS based on ?id= in URL -->
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-col company-info">
+                <div class="footer-logo">
+                    <img src="images/logo.png" alt="DataMatrix AI Logo" class="logo-img">
+                    <h2>Datamatrix<span class="highlight">.AI</span></h2>
+                </div>
+                <p class="company-desc">Transforming businesses through innovative AI solutions that drive growth, efficiency, and competitive advantage.</p>
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/company/datamatrixai-in/"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#testimonials">Results</a></li>
+                    <li><a href="index.html#careers">Careers</a></li>
+                    <li><a href="blogs.html">Blogs</a></li>
+                    <li><a href="index.html#aboutus">About Us</a></li>
+                    <li><a href="index.html#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3 class="footer-heading">Our Products</h3>
+                <ul class="footer-links">
+                    <li><a href="#">EDIS – AI-powered BI</a></li>
+                    <li><a href="#">BoQx – AI-powered image extraction</a></li>
+                </ul>
+            </div>
+            <div class="footer-col newsletter-col">
+                <h3 class="footer-heading">Newsletter</h3>
+                <p class="newsletter-desc">Subscribe to receive updates on the latest AI trends.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your Email Address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright">&copy; 2025 DataMatrixai. All rights reserved.</div>
+            <div class="legal-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /* ================================================
+           BLOG POST DATA
+           ================================================
+           To add a new post:
+           1. Add a new object to the `posts` array below
+           2. Give it the next sequential id
+           3. Add a matching card in blogs.html
+           4. Write your content in the `body` field using
+              standard HTML tags: <p>, <h2>, <h3>, <ul>, <li>,
+              <blockquote>, <strong>, <em>, <code>
+
+           body supports these styled elements:
+           - <p>            paragraph
+           - <h2>           section heading
+           - <h3>           sub-heading
+           - <ul><li>       bullet list
+           - <ol><li>       numbered list
+           - <blockquote>   pull quote
+           - <strong>       bold
+           - <code>         inline code
+           - <pre><code>    code block
+        ================================================ */
+
+        const posts = [
+            {
+                id: 1,
+                category: "Strategy",
+                date: "June 2025",
+                readTime: "6 min read",
+                author: "George Johnson",
+                authorRole: "Co-Founder, DatamatrixAI",
+                title: "Why Most Enterprise AI Projects Fail Before They Start",
+                tags: ["AI Strategy", "Enterprise", "Consulting"],
+                body: `
+                    <p>Every week we hear some version of the same story. A leadership team, energised by what they've read about AI, commissions a proof-of-concept. Three months later, the PoC works — technically. But it never makes it into production, nobody uses it, and the budget quietly disappears.</p>
+
+                    <p>The technology wasn't the problem. The problem was that nobody agreed on what problem they were actually trying to solve.</p>
+
+                    <h2>The use-case trap</h2>
+                    <p>When enterprises start an AI initiative without a clearly defined use case, they often default to one of two failure modes:</p>
+                    <ul>
+                        <li><strong>The demo problem:</strong> building something impressive enough to show in a boardroom but too narrow to justify a full deployment</li>
+                        <li><strong>The everything problem:</strong> trying to solve ten things at once, so the solution is too complex, too costly, and never quite right for any single workflow</li>
+                    </ul>
+
+                    <h2>What good use-case definition looks like</h2>
+                    <p>Before we write a line of code for any client, we run a structured discovery process. It asks three questions:</p>
+
+                    <ol>
+                        <li>Where are your people spending time on work that is repetitive, rule-based, or search-heavy?</li>
+                        <li>Where does a delay in information cost you money, customers, or compliance?</li>
+                        <li>What would a 10x improvement in that area actually be worth to the business?</li>
+                    </ol>
+
+                    <blockquote>The goal is not to find a place to use AI. The goal is to find the place where AI creates the most irreversible advantage.</blockquote>
+
+                    <h2>A simple framework we use</h2>
+                    <p>We score potential AI use cases across four dimensions: business impact, data availability, technical feasibility, and organisational readiness. The sweet spot — the use cases we push forward — are high on all four. Not just the ones that sound exciting in a slide deck.</p>
+
+                    <h2>What this means for your next initiative</h2>
+                    <p>If you are considering an AI project, start with the problem — not the technology. Resist the pressure to pick a model or a vendor before you have a crisp, measurable definition of what success looks like. The best AI projects feel almost boring to describe: "we want to reduce the time it takes to answer a customer query from four minutes to thirty seconds." That specificity is what separates deployments that stick from experiments that fade.</p>
+
+                    <p>We are always happy to run a no-obligation use-case discovery session. If you would like to talk through where AI could genuinely move the needle for your business, reach out.</p>
+                `
+            },
+            {
+                id: 2,
+                category: "Engineering",
+                date: "May 2025",
+                readTime: "8 min read",
+                author: "Radhabaran Mohanty",
+                authorRole: "Co-Founder, DatamatrixAI",
+                title: "RAG vs Fine-Tuning: Choosing the Right Approach for Your LLM",
+                tags: ["LLMs", "RAG", "MLOps"],
+                body: `
+                    <p>One of the most common questions we get from engineering teams is: should we use retrieval-augmented generation (RAG) or fine-tune the model? The answer depends on what problem you are actually trying to solve — and the two approaches are not mutually exclusive.</p>
+
+                    <h2>What each approach actually does</h2>
+                    <p><strong>RAG</strong> keeps the base model frozen and retrieves relevant documents at inference time, injecting them into the prompt. The model reasons over fresh, retrieved context rather than relying solely on what it learned during training.</p>
+                    <p><strong>Fine-tuning</strong> updates the model weights using your domain data. The knowledge gets baked in. The model learns your terminology, your tone, your patterns — but it does not gain new knowledge after the training run ends.</p>
+
+                    <h2>When RAG wins</h2>
+                    <ul>
+                        <li>Your knowledge base changes frequently (pricing, policies, product docs)</li>
+                        <li>You need the model to cite sources or show its working</li>
+                        <li>You cannot afford the cost and time of regular fine-tuning cycles</li>
+                        <li>You want to swap or update knowledge without touching the model</li>
+                    </ul>
+
+                    <h2>When fine-tuning wins</h2>
+                    <ul>
+                        <li>You need the model to behave in a very specific style or format consistently</li>
+                        <li>Your domain has highly specialised terminology the base model gets wrong</li>
+                        <li>Latency matters and you cannot afford the retrieval step at inference time</li>
+                        <li>The knowledge is stable and unlikely to change</li>
+                    </ul>
+
+                    <blockquote>RAG solves a knowledge problem. Fine-tuning solves a behaviour problem. Most enterprise deployments need both.</blockquote>
+
+                    <h2>The hybrid approach we use in production</h2>
+                    <p>For most of our enterprise clients, we combine both: a lightly fine-tuned model that has learned the client's tone, output format, and domain terminology, paired with a RAG layer that keeps the factual content current. This gives you the best of both — consistent behaviour with up-to-date knowledge.</p>
+
+                    <h2>Practical considerations before you decide</h2>
+                    <p>Before committing to either approach, audit your data. RAG only works as well as your retrieval pipeline — if your documents are unstructured, poorly chunked, or inconsistently formatted, retrieval quality will suffer. Fine-tuning requires a clean, representative dataset; training on noisy data produces noisy models.</p>
+
+                    <p>Start with RAG. It is faster to implement, easier to iterate on, and gives you a working system quickly. Move to fine-tuning — or a hybrid — once you understand exactly what the model is getting wrong.</p>
+                `
+            },
+            {
+                id: 3,
+                category: "Research",
+                date: "April 2025",
+                readTime: "5 min read",
+                author: "George Johnson",
+                authorRole: "Co-Founder, DatamatrixAI",
+                title: "Measuring What Matters: Evaluation Frameworks for Production AI",
+                tags: ["Evaluation", "AI Safety", "Production"],
+                body: `
+                    <p>Benchmark scores are marketing. What matters is how your model behaves in production, on your data, for your users — and whether you have the tooling to know when it starts to drift.</p>
+
+                    <h2>Why standard benchmarks are not enough</h2>
+                    <p>Most public benchmarks test for general language ability on curated datasets. Your production system will face a completely different distribution: your customers' phrasing, your internal jargon, your edge cases. A model that scores 90% on a public benchmark can still fail 30% of the time in your specific context.</p>
+
+                    <h2>The four layers of evaluation we run</h2>
+
+                    <h3>1. Functional correctness</h3>
+                    <p>Does the model do what it is supposed to do? For a summarisation system this means checking that key facts are present and nothing critical is hallucinated. For a classification system it means precision, recall, and F1 on your classes — not generic ones.</p>
+
+                    <h3>2. Behavioural consistency</h3>
+                    <p>Does the model behave consistently across semantically equivalent inputs? Paraphrase a question ten different ways. If you get ten meaningfully different answers, you have a reliability problem.</p>
+
+                    <h3>3. Edge case and adversarial testing</h3>
+                    <p>What happens at the boundary of the model's competence? We systematically construct inputs designed to trip up the model: ambiguous queries, contradictory context, out-of-scope requests. These reveal failure modes that normal evaluation misses.</p>
+
+                    <h3>4. Production monitoring</h3>
+                    <p>Offline evaluation is a snapshot. Models degrade over time as the world changes and input distributions shift. Production monitoring — tracking confidence scores, flagging low-quality outputs, measuring downstream business metrics — is the only way to catch drift before it becomes an incident.</p>
+
+                    <blockquote>Evaluation is not a one-time gate before launch. It is a continuous practice that runs in parallel with your production system.</blockquote>
+
+                    <h2>A minimum viable eval setup</h2>
+                    <p>If you are just getting started, build a golden dataset of 200–300 hand-labelled examples representative of your real traffic. Run every model change against it. Track the score over time. That single practice will catch more production issues than any benchmark suite.</p>
+                `
+            },
+            {
+                id: 4,
+                category: "Product",
+                date: "March 2025",
+                readTime: "4 min read",
+                author: "Radhabaran Mohanty",
+                authorRole: "Co-Founder, DatamatrixAI",
+                title: "How MelC Reduced Coaching Time by 88% at a Leading BPO",
+                tags: ["MelC", "Case Study", "Contact Center"],
+                body: `
+                    <p>When a large BPO approached us, their quality assurance team was spending roughly 40 hours a week manually listening to calls, scoring them against a rubric, and writing coaching notes for agents. They had 2,000 seats across three shifts. The math was brutal: they could meaningfully review less than 2% of calls.</p>
+
+                    <h2>The problem with sampling</h2>
+                    <p>Random sampling at 2% means most coaching decisions are based on statistical inference rather than actual agent behaviour. A bad week can go unnoticed. A good agent can be flagged unfairly. And the feedback loop — the time between a call happening and an agent receiving coaching — was averaging eleven days.</p>
+
+                    <h2>What MelC changed</h2>
+                    <p>We deployed MelC across the client's call infrastructure. Every call is now transcribed, scored against the client's custom rubric, and surfaced to supervisors in near real-time. Supervisors review flagged calls — the ones that score outside expected ranges — rather than sampling randomly.</p>
+
+                    <ul>
+                        <li>Call review coverage went from 2% to 100%</li>
+                        <li>Average feedback loop dropped from 11 days to under 18 hours</li>
+                        <li>Coaching time per supervisor fell by 88%</li>
+                        <li>CSAT scores improved 25% in the following quarter</li>
+                    </ul>
+
+                    <h2>The integration challenge</h2>
+                    <p>The client ran three different telephony systems across their sites — a legacy on-premise PBX, a cloud contact centre platform, and a softphone setup for remote agents. Connecting MelC to all three without disrupting live operations took eight weeks of careful engineering work. This is usually the hardest part of any deployment: not the AI, but the plumbing.</p>
+
+                    <blockquote>The technology was ready in weeks. The integration took months. Build your timeline accordingly.</blockquote>
+
+                    <h2>What we learned</h2>
+                    <p>The metric that moved most unexpectedly was agent satisfaction. Agents initially worried about being monitored constantly. What actually happened: because feedback was faster and more specific, agents felt more supported. Coaching conversations became shorter and more actionable. The team reported higher confidence in their performance assessments.</p>
+
+                    <p>If you run a contact centre and want to understand what MelC could look like in your environment, we offer a structured pilot programme. Get in touch.</p>
+                `
+            },
+            {
+                id: 5,
+                category: "Strategy",
+                date: "February 2025",
+                readTime: "7 min read",
+                author: "George Johnson",
+                authorRole: "Co-Founder, DatamatrixAI",
+                title: "Responsible AI is Not a Feature — It's a Foundation",
+                tags: ["Responsible AI", "Governance", "Ethics"],
+                body: `
+                    <p>Somewhere along the way, "responsible AI" became a marketing phrase. A badge. Something you put in a slide deck to reassure a procurement committee. We want to be direct: that version of responsible AI is not what we mean, and it is not what enterprises actually need.</p>
+
+                    <h2>What responsible AI actually requires</h2>
+                    <p>Responsible AI at enterprise scale means building systems where you can answer three questions at any point in time:</p>
+                    <ol>
+                        <li>What decision did this system make, and why?</li>
+                        <li>Who is accountable when the system gets it wrong?</li>
+                        <li>How would we know if it started to behave differently than intended?</li>
+                    </ol>
+                    <p>Most enterprise AI deployments cannot answer any of these questions clearly. That is a governance problem, not a technology problem — and it is fixable.</p>
+
+                    <h2>Explainability is not optional</h2>
+                    <p>Regulators across financial services, healthcare, and public sector are increasingly requiring organisations to explain automated decisions. "The model said so" is not an acceptable answer. Explainability needs to be designed in from the start — not retrofitted after a compliance audit.</p>
+
+                    <h2>Bias is a data problem first</h2>
+                    <p>Most AI bias originates in training data that reflects historical inequities. Auditing your data before you train — not after — is the most cost-effective intervention. We run data audits as a standard part of every engagement precisely because fixing bias in data is an order of magnitude cheaper than fixing it in a deployed model.</p>
+
+                    <blockquote>Responsible AI is not a constraint on what you can build. It is the condition under which what you build actually holds up.</blockquote>
+
+                    <h2>The business case</h2>
+                    <p>Responsible AI is also good business. Systems that are explainable are easier to debug. Systems with clear accountability structures recover faster from failures. Systems with ongoing monitoring catch degradation before it becomes a crisis. The practices that make AI responsible also make it more reliable — and reliability is what creates enterprise value.</p>
+
+                    <p>We have built AI governance frameworks for organisations ranging from 50-person startups to FTSE-listed enterprises. The scale differs; the principles do not. If you want to talk through what a governance framework would look like for your organisation, we are happy to start that conversation.</p>
+                `
+            },
+            {
+                id: 6,
+                category: "Engineering",
+                date: "January 2025",
+                readTime: "9 min read",
+                author: "Radhabaran Mohanty",
+                authorRole: "Co-Founder, DatamatrixAI",
+                title: "Agentic AI in the Enterprise: Patterns That Actually Work",
+                tags: ["Agentic AI", "Architecture", "LLMs"],
+                body: `
+                    <p>Agentic AI — systems where an LLM orchestrates a sequence of actions, tool calls, and decisions to complete a goal — is one of the most talked-about areas in applied AI right now. It is also one of the easiest to get spectacularly wrong in production.</p>
+
+                    <h2>What makes agents hard</h2>
+                    <p>A single LLM call has one failure mode: the model gives a bad answer. An agent chain has compounding failure modes: each step can fail, and failures cascade. An agent that is wrong on step two, then confidently executes steps three through eight based on that wrong premise, can do a lot of damage before a human notices.</p>
+
+                    <h2>Patterns that hold up in production</h2>
+
+                    <h3>Scope agents tightly</h3>
+                    <p>The most reliable agents we have deployed have a narrow, well-defined task: summarise this document, extract these fields from this form, check whether this query matches any of these policies. As soon as an agent is asked to "figure out the best approach" for something open-ended, reliability drops sharply. Narrow scope means predictable behaviour.</p>
+
+                    <h3>Make every step auditable</h3>
+                    <p>Log every tool call, every model response, every decision point. In production you will inevitably need to reconstruct what an agent did and why. Systems that do not log this are impossible to debug and impossible to audit for compliance purposes.</p>
+
+                    <h3>Build explicit checkpoints</h3>
+                    <p>For any action that is irreversible — sending an email, updating a record, making a payment — require explicit confirmation before execution. The cost of a checkpoint is a second or two of latency. The cost of an agent confidently taking the wrong irreversible action is much higher.</p>
+
+                    <h3>Fail loudly, not silently</h3>
+                    <p>When an agent cannot complete a step, it should surface that clearly and hand off to a human — not attempt to work around the failure in ways that are hard to detect. Silent degradation is the most dangerous failure mode in agentic systems.</p>
+
+                    <blockquote>The goal of an agentic system is not autonomy for its own sake. It is getting reliable work done with the minimum necessary human intervention.</blockquote>
+
+                    <h2>Where we see the most value today</h2>
+                    <p>The enterprise use cases where agents deliver the clearest ROI right now are document processing workflows (extract, validate, route), internal knowledge retrieval pipelines (search, synthesise, answer), and multi-step data enrichment tasks. These are structured enough to scope tightly, important enough to justify the engineering investment, and contained enough that failures are recoverable.</p>
+
+                    <p>Full end-to-end autonomous agents handling complex, open-ended business processes are coming — but the infrastructure, tooling, and organisational trust needed to deploy them reliably at scale is still maturing. Build the foundational patterns now. The ambitious applications will follow.</p>
+                `
+            }
+        ];
+
+        /* ================================================
+           RENDER ENGINE — do not edit below this line
+           unless you want to change the post layout
+        ================================================ */
+        function getPostId() {
+            const params = new URLSearchParams(window.location.search);
+            return parseInt(params.get('id'));
+        }
+
+        function renderPost(post) {
+            document.getElementById('pageTitle').textContent = post.title + ' – DatamatrixAI';
+            document.getElementById('postMain').innerHTML = `
+                <div class="post-back-bar">
+                    <a href="blogs.html" class="post-back-link">
+                        <i class="fas fa-arrow-left"></i> Back to all posts
+                    </a>
+                </div>
+                <article class="post-article">
+                    <header class="post-header">
+                        <div class="post-header-meta">
+                            <span class="blog-category-badge ${post.category.toLowerCase()}">${post.category}</span>
+                            <span class="post-meta-item"><i class="fas fa-calendar-alt"></i> ${post.date}</span>
+                            <span class="post-meta-item"><i class="fas fa-clock"></i> ${post.readTime}</span>
+                        </div>
+                        <h1 class="post-title">${post.title}</h1>
+                        <div class="post-author-row">
+                            <div class="post-author-info">
+                                <span class="post-author-name">${post.author}</span>
+                                <span class="post-author-role">${post.authorRole}</span>
+                            </div>
+                        </div>
+                        <div class="blog-tags" style="margin-top: 1rem;">
+                            ${post.tags.map(t => `<span class="blog-tag">${t}</span>`).join('')}
+                        </div>
+                    </header>
+                    <div class="post-body">
+                        ${post.body}
+                    </div>
+                    <div class="post-footer-nav">
+                        <a href="blogs.html" class="post-back-link">
+                            <i class="fas fa-arrow-left"></i> Back to all posts
+                        </a>
+                    </div>
+                </article>
+            `;
+        }
+
+        function renderNotFound() {
+            document.getElementById('postMain').innerHTML = `
+                <div class="post-not-found">
+                    <i class="fas fa-file-circle-question"></i>
+                    <h2>Post not found</h2>
+                    <p>This post may have moved or been removed.</p>
+                    <a href="blogs.html" class="blog-read-btn" style="display:inline-flex; margin-top: 1.5rem;">
+                        <i class="fas fa-arrow-left"></i> Back to all posts
+                    </a>
+                </div>
+            `;
+        }
+
+        const id = getPostId();
+        const post = posts.find(p => p.id === id);
+        post ? renderPost(post) : renderNotFound();
+    </script>
+
+</body>
+</html>
