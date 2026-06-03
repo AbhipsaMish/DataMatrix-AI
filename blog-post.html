@@ -370,7 +370,7 @@
                     </a>
                 </div>
                 <article class="post-article">
-                    <header class="post-header">
+                    <div class="post-header">
                         <div class="post-header-meta">
                             <span class="blog-category-badge ${post.category.toLowerCase()}">${post.category}</span>
                             <span class="post-meta-item"><i class="fas fa-calendar-alt"></i> ${post.date}</span>
@@ -386,7 +386,7 @@
                         <div class="blog-tags" style="margin-top: 1rem;">
                             ${post.tags.map(t => `<span class="blog-tag">${t}</span>`).join('')}
                         </div>
-                    </header>
+                    </div>
                     <div class="post-body">
                         ${post.body}
                     </div>
