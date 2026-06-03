@@ -1,0 +1,541 @@
+/* ============================================
+   FONTS — Import distinctive display + body pair
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+/* ============================================
+   HERO — FULL BACKGROUND VERSION
+   ============================================ */
+.hero--fullbg {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Circuit canvas fills the entire hero */
+.hero-circuit-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Dark overlay — heavier at top (nav area) and bottom, lighter in center */
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background:
+        linear-gradient(to bottom,
+            rgba(5, 7, 10, 0.92) 0%,
+            rgba(5, 7, 10, 0.55) 30%,
+            rgba(5, 7, 10, 0.45) 60%,
+            rgba(5, 7, 10, 0.88) 100%
+        );
+}
+
+/* Centered content sits above canvas and overlay */
+.hero-center-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 900px;
+    padding: 0 24px;
+    margin-top: 80px; /* clear fixed header */
+}
+
+/* Override hero-title for new centered layout */
+.hero--fullbg .hero-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2.4rem, 5.5vw, 4.2rem) !important;
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    text-align: center;
+    white-space: normal;
+    color: #ffffff;
+    margin-bottom: 24px;
+}
+
+.hero--fullbg .hero-title .highlight {
+    color: #FF8C00;
+    text-shadow:
+        0 0 40px rgba(255, 140, 0, 0.45),
+        0 0 80px rgba(255, 140, 0, 0.2);
+}
+
+/* Override hero-subtitle */
+.hero--fullbg .hero-subtitle {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(1rem, 2vw, 1.2rem) !important;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.7;
+    max-width: 680px;
+    margin: 0 auto 40px;
+    letter-spacing: 0.01em;
+    opacity: 1;
+}
+
+/* CTA group */
+.hero-cta-group {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hero-cta-group .btn-primary {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    padding: 14px 32px;
+    border-radius: 8px;
+    background: #0057B8;
+    color: #fff;
+    border: 2px solid #0057B8;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 24px rgba(0, 87, 184, 0.4);
+}
+
+.hero-cta-group .btn-primary:hover {
+    background: transparent;
+    border-color: #FF8C00;
+    color: #FF8C00;
+    box-shadow: 0 0 24px rgba(255, 140, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.hero-cta-group .btn-secondary {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+    padding: 14px 32px;
+    border-radius: 8px;
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.hero-cta-group .btn-secondary:hover {
+    border-color: #FF8C00;
+    color: #FF8C00;
+    transform: translateY(-2px);
+}
+
+/* Scroll hint at bottom of hero */
+.hero--fullbg::after {
+    content: '';
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, rgba(255,140,0,0.6), transparent);
+    animation: scrollHint 2s ease-in-out infinite;
+}
+
+@keyframes scrollHint {
+    0%, 100% { opacity: 0.4; transform: translateX(-50%) scaleY(1); }
+    50% { opacity: 1; transform: translateX(-50%) scaleY(1.15); }
+}
+
+/* ============================================
+   CIRCUIT BOARD CANVAS SCRIPT
+   (Injected via JS at bottom of index.html)
+   ============================================ */
+
+/* ============================================
+   HOOK BANNER — "Real problems. Real ROI."
+   ============================================ */
+.hook-banner {
+    width: 100%;
+    padding: 72px 5%;
+    background:
+        linear-gradient(135deg,
+            rgba(0, 87, 184, 0.08) 0%,
+            rgba(5, 7, 10, 0) 50%,
+            rgba(255, 140, 0, 0.06) 100%
+        );
+    border-top: 1px solid rgba(0, 87, 184, 0.12);
+    border-bottom: 1px solid rgba(255, 140, 0, 0.1);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative side lines */
+.hook-banner::before,
+.hook-banner::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255, 140, 0, 0.4));
+}
+
+.hook-banner::before { left: 5%; }
+.hook-banner::after {
+    right: 5%;
+    background: linear-gradient(to left, transparent, rgba(255, 140, 0, 0.4));
+}
+
+.hook-inner {
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.hook-text {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+}
+
+.hook-highlight {
+    color: #FF8C00;
+    text-shadow: 0 0 30px rgba(255, 140, 0, 0.4);
+    position: relative;
+}
+
+/* Underline accent on "Real ROI" */
+.hook-highlight::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, #FF8C00, #00A651);
+    border-radius: 2px;
+}
+
+/* ============================================
+   BODY COPY SECTION
+   ============================================ */
+.body-copy-section {
+    padding: 80px 5%;
+    background: transparent;
+}
+
+.body-copy-column {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.body-copy-column p {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(1rem, 1.6vw, 1.125rem);
+    font-weight: 300;
+    line-height: 1.85;
+    color: rgba(255, 255, 255, 0.72);
+    margin-bottom: 1.6rem;
+    letter-spacing: 0.01em;
+}
+
+.body-copy-column p:last-child {
+    margin-bottom: 0;
+}
+
+/* ============================================
+   WHAT WE DO — SPOTLIGHT CARDS
+   ============================================ */
+.whatwedo-section {
+    padding: 80px 5% 100px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle background glow */
+.whatwedo-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 400px;
+    background: radial-gradient(ellipse at center,
+        rgba(0, 87, 184, 0.08) 0%,
+        transparent 70%
+    );
+    pointer-events: none;
+}
+
+.whatwedo-heading {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: #ffffff;
+    text-align: center;
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+}
+
+.whatwedo-subheading {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    margin-bottom: 56px;
+    letter-spacing: 0.02em;
+}
+
+/* Horizontal scroll track */
+.whatwedo-scroll-track {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ── SPOTLIGHT CARD ────────────────────────── */
+.spotlight-card {
+    position: relative;
+    background: rgba(0, 20, 55, 0.45);
+    border: 1px solid rgba(0, 87, 184, 0.2);
+    border-radius: 20px;
+    padding: 36px 28px;
+    overflow: hidden;
+    cursor: default;
+    transition: border-color 0.4s ease, transform 0.3s ease, box-shadow 0.4s ease;
+
+    /* CSS custom properties for spotlight position */
+    --spotlight-x: 50%;
+    --spotlight-y: 50%;
+}
+
+/* The radial glow that follows the mouse */
+.spotlight-card__glow {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    background: radial-gradient(
+        260px circle at var(--spotlight-x) var(--spotlight-y),
+        rgba(255, 140, 0, 0.12) 0%,
+        rgba(0, 87, 184, 0.06) 50%,
+        transparent 100%
+    );
+    z-index: 0;
+}
+
+.spotlight-card:hover .spotlight-card__glow {
+    opacity: 1;
+}
+
+.spotlight-card:hover {
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 140, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* Icon container */
+.spotlight-card__icon {
+    position: relative;
+    z-index: 1;
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: linear-gradient(135deg,
+        rgba(0, 87, 184, 0.25),
+        rgba(0, 87, 184, 0.1)
+    );
+    border: 1px solid rgba(0, 87, 184, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #FF8C00;
+    margin-bottom: 24px;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.spotlight-card:hover .spotlight-card__icon {
+    background: linear-gradient(135deg,
+        rgba(255, 140, 0, 0.2),
+        rgba(255, 140, 0, 0.08)
+    );
+    border-color: rgba(255, 140, 0, 0.4);
+}
+
+/* Number label — subtle top-right corner */
+.spotlight-card::before {
+    content: attr(data-num);
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.12);
+    z-index: 1;
+}
+
+.spotlight-card__title {
+    position: relative;
+    z-index: 1;
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.spotlight-card__desc {
+    position: relative;
+    z-index: 1;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.65;
+    margin: 0;
+}
+
+/* Bottom accent line that grows on hover */
+.spotlight-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    border-radius: 0 0 20px 20px;
+    transition: width 0.4s ease;
+    z-index: 2;
+}
+
+.spotlight-card:hover::after {
+    width: 100%;
+}
+
+/* Responsive — 2 col on tablet, 1 col on mobile */
+@media (max-width: 1024px) {
+    .whatwedo-scroll-track {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .whatwedo-scroll-track {
+        grid-template-columns: 1fr;
+    }
+    .whatwedo-section {
+        padding: 60px 5% 80px;
+    }
+}
+
+/* ============================================
+   CLOSING PILLS ROW
+   ============================================ */
+.closing-pills-section {
+    padding: 60px 5% 80px;
+    border-top: 1px solid rgba(0, 87, 184, 0.1);
+}
+
+.closing-pills-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.closing-pill {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(0, 20, 55, 0.5);
+    border: 1px solid rgba(0, 87, 184, 0.2);
+    border-radius: 100px;
+    padding: 14px 28px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.closing-pill:hover {
+    border-color: #FF8C00;
+    background: rgba(255, 140, 0, 0.06);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.closing-pill__icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(0, 87, 184, 0.15);
+    border: 1px solid rgba(0, 87, 184, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    color: #FF8C00;
+    flex-shrink: 0;
+    transition: background 0.3s ease;
+}
+
+.closing-pill:hover .closing-pill__icon {
+    background: rgba(255, 140, 0, 0.15);
+    border-color: rgba(255, 140, 0, 0.3);
+}
+
+.closing-pill__label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+}
+
+/* Separator dots between pills on desktop */
+.closing-pill + .closing-pill::before {
+    display: none; /* Using gap instead */
+}
+
+@media (max-width: 640px) {
+    .closing-pills-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .closing-pill {
+        justify-content: center;
+    }
+    .closing-pill__label {
+        white-space: normal;
+        text-align: center;
+    }
+}
