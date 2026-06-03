@@ -170,63 +170,133 @@ resize(); frame();
         <a href="#contact" class="btn-reach">Contact Us</a>
     </header>
     
-    <section class="hero">
-        <div class="hero-header-container">
-            <div class="hero-header-content">
-                    <h1 class="hero-title">Transforming Business with <span class="highlight">Advanced AI</span></h1>
-                    <p class="hero-subtitle">Empowering enterprises and innovators to adopt AI with confidence—from strategy through responsible, real-world deployment</p>
+    <section class="hero hero--fullbg">
+
+        <!-- Circuit board canvas animation lives here as background -->
+        <canvas id="circuit-canvas" class="hero-circuit-canvas"></canvas>
+
+        <!-- Dark overlay so text stays legible -->
+        <div class="hero-overlay"></div>
+
+        <!-- Centered hero content -->
+        <div class="hero-center-content">
+            <h1 class="hero-title">
+                Built on AI. <span class="highlight">Delivered as Products.</span>
+            </h1>
+            <p class="hero-subtitle">
+                Engineering proprietary, production-ready AI products that solve real enterprise problems — responsibly, at scale.
+            </p>
+            <div class="hero-cta-group">
+                <a href="#products" class="btn-primary">Explore Products</a>
+                <a href="#contact" class="btn-secondary">Talk to Us</a>
             </div>
         </div>
-        <div class="hero-main-layout">
-            <div class="hero-left-new">
-                <div>
-                    <p class="lead-text">Datamatrix.AI partners with enterprises to design, build, and deploy AI systems that are secure, compliant, and ready for real-world use.</p>
-                    <p class="detail-text" style="margin-bottom: 10px;">We deliver end-to-end AI services across the full lifecycle:</p>
-                    
-                    <div class="services-grid-hero">
-                        
-                        <div class="service-item">
-                            <div class="svc-icon"><i class="fas fa-chess-knight"></i></div>
-                            <div class="service-content">
-                                <h4>AI Strategy & Consulting</h4>
-                                <p>Aligning business goals, data, and architecture for clear AI roadmaps.</p>
-                            </div>
-                        </div>
 
-                        <div class="service-item">
-                            <div class="svc-icon"><i class="fas fa-microchip"></i></div>
-                            <div class="service-content">
-                                <h4>Custom AI & Product Dev</h4>
-                                <p>Building production-ready solutions using LLMs & Agentic AI.</p>
-                            </div>
-                        </div>
+    </section>
 
-                        <div class="service-item">
-                            <div class="svc-icon"><i class="fas fa-network-wired"></i></div>
-                            <div class="service-content">
-                                <h4>Engineering & MLOps</h4>
-                                <p>Integrating AI into enterprise systems with built-in scalability.</p>
-                            </div>
-                        </div>
 
-                        <div class="service-item">
-                            <div class="svc-icon"><i class="fas fa-graduation-cap"></i></div>
-                            <div class="service-content">
-                                <h4>Research & Training</h4>
-                                <p>Advancing capabilities through applied R&D and team upskilling.</p>
-                            </div>
-                        </div>
+    <!-- ═══════════════════════════════════════════════════════
+         2. HOOK — full-width bold callout banner
+    ═══════════════════════════════════════════════════════ -->
+    <section class="hook-banner">
+        <div class="hook-inner">
+            <p class="hook-text">
+                Real problems. Real products. <span class="hook-highlight">Real ROI.</span>
+            </p>
+        </div>
+    </section>
 
-                    </div>
+
+    <!-- ═══════════════════════════════════════════════════════
+         3. BODY COPY — centered column, two paragraphs
+    ═══════════════════════════════════════════════════════ -->
+    <section class="body-copy-section">
+        <div class="body-copy-column">
+            <p>
+                Datamatrix.AI partners with enterprises to design, build, and deploy AI systems that are secure, compliant, and ready for real-world use. We don't just consult — we build proprietary products and integrate them into your existing infrastructure, from day one through production.
+            </p>
+            <p>
+                Whether you're a CXO seeking faster insights, an engineering team scaling ML systems, or a business unit ready to automate complex workflows — our end-to-end AI services span strategy, product development, MLOps, and applied research.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════
+         4. WHAT WE DO — horizontal scroll spotlight cards
+             Option A: single row, horizontal scroll on mobile,
+             each card has a spotlight/radial glow on hover
+    ═══════════════════════════════════════════════════════ -->
+    <section id="what-we-do" class="whatwedo-section">
+        <div class="section-header-product">
+            <h2 class="whatwedo-heading">What We Do</h2>
+            <p class="whatwedo-subheading">End-to-end AI services across the full lifecycle.</p>
+        </div>
+
+        <!-- Scroll track — horizontal on all viewports, wraps on large screens -->
+        <div class="whatwedo-scroll-track">
+
+            <div class="spotlight-card" data-spotlight data-num="01">
+                <div class="spotlight-card__glow"></div>
+                <div class="spotlight-card__icon">
+                    <i class="fas fa-chess-knight"></i>
                 </div>
-                
-                </div>
-
-            <div class="hero-video">
-                <video autoplay muted loop playsinline>
-                    <source src="assets/best.mp4" type="video/mp4">
-                </video>
+                <h3 class="spotlight-card__title">AI Strategy &amp; Consulting</h3>
+                <p class="spotlight-card__desc">Aligning business goals, data, and architecture for clear AI roadmaps.</p>
             </div>
+
+            <div class="spotlight-card" data-spotlight data-num="02">
+                <div class="spotlight-card__glow"></div>
+                <div class="spotlight-card__icon">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <h3 class="spotlight-card__title">Custom AI &amp; Product Dev</h3>
+                <p class="spotlight-card__desc">Building production-ready solutions using LLMs &amp; Agentic AI.</p>
+            </div>
+
+            <div class="spotlight-card" data-spotlight data-num="03">
+                <div class="spotlight-card__glow"></div>
+                <div class="spotlight-card__icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <h3 class="spotlight-card__title">Engineering & MLOps</h3>
+                <p class="spotlight-card__desc">Integrating AI into enterprise systems with built-in scalability.</p>
+            </div>
+
+            <div class="spotlight-card" data-spotlight data-num="04">
+                <div class="spotlight-card__glow"></div>
+                <div class="spotlight-card__icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3 class="spotlight-card__title">Research & Training</h3>
+                <p class="spotlight-card__desc">Advancing capabilities through applied R&D and team upskilling.</p>
+            </div>
+
+        </div><!-- /.whatwedo-scroll-track -->
+    </section>
+
+
+    <!-- ═══════════════════════════════════════════════════════
+         5. CLOSING LINE — 3-pill row
+    ═══════════════════════════════════════════════════════ -->
+    <section class="closing-pills-section">
+        <div class="closing-pills-row">
+
+            <div class="closing-pill">
+                <span class="closing-pill__icon"><i class="fas fa-building"></i></span>
+                <span class="closing-pill__label">On-Premise or Cloud</span>
+            </div>
+
+            <div class="closing-pill">
+                <span class="closing-pill__icon"><i class="fas fa-sliders-h"></i></span>
+                <span class="closing-pill__label">Tailored to Your Business</span>
+            </div>
+
+            <div class="closing-pill">
+                <span class="closing-pill__icon"><i class="fas fa-chart-line"></i></span>
+                <span class="closing-pill__label">Quicker ROI</span>
+            </div>
+
         </div>
     </section>
 
