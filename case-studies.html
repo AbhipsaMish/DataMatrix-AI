@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POVs — DatamatrixAI</title>
-    <meta name="description" content="Points of view on enterprise AI, responsible deployment, and what's next — from the DatamatrixAI team.">
+    <title>Case Studies — DatamatrixAI</title>
+    <meta name="description" content="Real-world deployments, real results — case studies from DatamatrixAI's enterprise AI solutions.">
     <link rel="icon" type="image/png" href="assets/images/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -22,7 +22,7 @@
         }
         a { text-decoration: none; color: inherit; }
 
-        /* ── PAGE WRAPPER ── */
+        /* ── PAGE ── */
         .cs-page {
             min-height: 100vh;
             display: flex;
@@ -35,7 +35,6 @@
             text-align: center;
         }
 
-        /* Background glow */
         .cs-page::before {
             content: '';
             position: absolute;
@@ -43,12 +42,11 @@
             transform: translate(-50%, -50%);
             width: 700px; height: 500px;
             background:
-                radial-gradient(ellipse at 30% 50%, rgba(0,87,184,0.12) 0%, transparent 60%),
-                radial-gradient(ellipse at 70% 50%, rgba(255,140,0,0.06) 0%, transparent 60%);
+                radial-gradient(ellipse at 30% 50%, rgba(0,166,81,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 50%, rgba(0,87,184,0.1) 0%, transparent 60%);
             pointer-events: none;
         }
 
-        /* Subtle grid */
         .cs-page::after {
             content: '';
             position: absolute;
@@ -60,17 +58,13 @@
             pointer-events: none;
         }
 
-        /* ── CONTENT ── */
         .cs-inner {
             position: relative;
             z-index: 1;
-            max-width: 680px;
+            max-width: 780px;
             margin: 0 auto;
         }
 
-
-
-        /* Heading */
         .cs-heading {
             font-family: 'Syne', sans-serif;
             font-size: clamp(1rem, 4vw, 2.4rem);
@@ -80,7 +74,6 @@
             color: #ffffff;
             margin-bottom: 16px;
         }
-
     </style>
 </head>
 <body>
@@ -89,11 +82,14 @@
 
 <main class="cs-page">
     <div class="cs-inner">
-        </div>
 
         <h1 class="cs-heading">
-            Our thinking.<br>Coming soon.
+            Real deployments.<br>Real numbers.
         </h1>
+
+        <p class="cs-sub">
+            Detailed case studies from our enterprise deployments are being documented.
+        </p>
 
     </div>
 </main>

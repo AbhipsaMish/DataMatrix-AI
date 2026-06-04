@@ -6,7 +6,6 @@
     <title>Blogs – DatamatrixAI</title>
     <meta name="description" content="Insights, research, and thinking on enterprise AI from the DatamatrixAI team.">
     <link rel="icon" type="image/png" href="assets/images/logo.png">
-    <link rel="icon" type="image/png" href="assets/images/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
@@ -14,7 +13,6 @@
     <link rel="stylesheet" href="css/nav-dropdown.css">
 </head>
 <body>
-
 
     <section class="blogs-hero">
         <div class="blogs-hero-inner">
@@ -27,7 +25,6 @@
     <section class="blogs-section">
         <div class="blogs-container">
 
-            <!-- FILTER BAR -->
             <div class="blogs-filter-bar">
                 <button class="filter-btn active" data-filter="all">All</button>
                 <button class="filter-btn" data-filter="strategy">Strategy</button>
@@ -36,146 +33,112 @@
                 <button class="filter-btn" data-filter="product">Product</button>
             </div>
 
-            <!-- BLOG GRID — add new cards at the TOP, oldest at the bottom -->
-            <div class="blogs-grid" id="blogsGrid">
+            <div class="blogs-grid" id="blogsGrid"></div>
 
-                <!-- =============================================
-                     HOW TO ADD A NEW BLOG POST:
-                     1. Copy one .blog-card block below
-                     2. Paste it ABOVE all existing cards (so it appears first)
-                     3. Update: data-category, date, read-time, title, excerpt, tags, and the href on the Read button
-                     4. Create a matching entry in blog-post.html (see that file for instructions)
-                ============================================= -->
-
-                <!-- BLOG CARD 1 — Latest -->
-                <article class="blog-card" data-category="strategy">
-                    <div class="blog-card-top">
-                        <div class="blog-meta">
-                            <span class="blog-date"><i class="fas fa-calendar-alt"></i> June 2025</span>
-                            <span class="blog-read-time"><i class="fas fa-clock"></i> 6 min read</span>
-                        </div>
-                        <span class="blog-category-badge strategy">Strategy</span>
-                    </div>
-                    <h2 class="blog-title">Why Most Enterprise AI Projects Fail Before They Start</h2>
-                    <p class="blog-excerpt">The biggest obstacle to AI adoption isn't the technology — it's the absence of a clear problem worth solving. Here's how we help enterprises define the right AI use cases before writing a single line of code.</p>
-                    <div class="blog-tags">
-                        <span class="blog-tag">AI Strategy</span>
-                        <span class="blog-tag">Enterprise</span>
-                        <span class="blog-tag">Consulting</span>
-                    </div>
-                    <a href="blog-post.html?id=1" class="blog-read-btn">
-                        Read Article <i class="fas fa-arrow-right"></i>
-                    </a>
-                </article>
-
-                <!-- BLOG CARD 2 -->
-                <article class="blog-card" data-category="engineering">
-                    <div class="blog-card-top">
-                        <div class="blog-meta">
-                            <span class="blog-date"><i class="fas fa-calendar-alt"></i> May 2025</span>
-                            <span class="blog-read-time"><i class="fas fa-clock"></i> 8 min read</span>
-                        </div>
-                        <span class="blog-category-badge engineering">Engineering</span>
-                    </div>
-                    <h2 class="blog-title">RAG vs Fine-Tuning: Choosing the Right Approach for Your LLM</h2>
-                    <p class="blog-excerpt">Both RAG and fine-tuning can ground an LLM in your company's knowledge — but they solve different problems. We break down when to use each, with real examples from our enterprise deployments.</p>
-                    <div class="blog-tags">
-                        <span class="blog-tag">LLMs</span>
-                        <span class="blog-tag">RAG</span>
-                        <span class="blog-tag">MLOps</span>
-                    </div>
-                    <a href="blog-post.html?id=2" class="blog-read-btn">
-                        Read Article <i class="fas fa-arrow-right"></i>
-                    </a>
-                </article>
-
-
-            </div><!-- /blogs-grid -->
-
-            <!-- Empty state (shown by JS when filter has no matches) -->
             <div class="blogs-empty" id="blogsEmpty" style="display:none;">
                 <i class="fas fa-folder-open"></i>
                 <p>No posts in this category yet. Check back soon.</p>
             </div>
 
+            <!-- PAGINATION -->
+            <div class="blogs-pagination" id="blogsPagination"></div>
+
         </div>
     </section>
 
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-col company-info">
-                <div class="footer-logo">
-                    <img src="assets/images/logo.png" alt="DataMatrix AI Logo" class="logo-img">
-                    <h2>Datamatrix<span class="highlight">.AI</span></h2>
-                </div>
-                <p class="company-desc">Transforming businesses through innovative AI solutions that drive growth, efficiency, and competitive advantage.</p>
-                <div class="social-icons">
-                    <a href="https://www.linkedin.com/company/datamatrixai-in/"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="index.html"><i class="fab fa-twitter"></i></a>
-                    <a href="index.html"><i class="fab fa-facebook-f"></i></a>
-                    <a href="index.html"><i class="fab fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h3 class="footer-heading">Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#testimonials">Results</a></li>
-                    <li><a href="index.html#careers">Careers</a></li>
-                    <li><a href="blogs.html">Blogs</a></li>
-                    <li><a href="index.html#aboutus">About Us</a></li>
-                    <li><a href="index.html#contact">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h3 class="footer-heading">Our Products</h3>
-                <ul class="footer-links">
-                    <li><a href="edis.html">EDIS – AI-powered BI</a></li>
-                </ul>
-            </div>
-            <div class="footer-col newsletter-col">
-                <h3 class="footer-heading">Newsletter</h3>
-                <p class="newsletter-desc">Subscribe to receive updates on the latest AI trends.</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Your Email Address" required>
-                    <button type="submit">Subscribe</button>
-                </form>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="copyright">&copy; 2025 DataMatrixai. All rights reserved.</div>
-            <div class="legal-links">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-            </div>
-        </div>
-    </footer>
-
     <script>
-        // Category filter
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const cards = document.querySelectorAll('.blog-card');
-        const emptyState = document.getElementById('blogsEmpty');
+        /* ============================================================
+           ALL POSTS — add new posts here. They auto-appear on the grid.
+           To add: push a new object with the same shape as below.
+           id must be unique and match the blog-post.html posts array.
+        ============================================================ */
+        const allPosts = [
+            { id: 1,  category: "",    date: "",     readTime: "",  title: "" }
+        ];
 
-        filterBtns.forEach(btn => {
+        const POSTS_PER_PAGE = 6;
+        let currentFilter = 'all';
+        let currentPage = 1;
+
+        function getFiltered() {
+            return currentFilter === 'all'
+                ? allPosts
+                : allPosts.filter(p => p.category === currentFilter);
+        }
+
+        function renderGrid() {
+            const filtered = getFiltered();
+            const grid = document.getElementById('blogsGrid');
+            const empty = document.getElementById('blogsEmpty');
+            const pagination = document.getElementById('blogsPagination');
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                empty.style.display = 'block';
+                pagination.innerHTML = '';
+                return;
+            }
+            empty.style.display = 'none';
+
+            const totalPages = Math.ceil(filtered.length / POSTS_PER_PAGE);
+            if (currentPage > totalPages) currentPage = 1;
+
+            const start = (currentPage - 1) * POSTS_PER_PAGE;
+            const pagePosts = filtered.slice(start, start + POSTS_PER_PAGE);
+
+            grid.innerHTML = pagePosts.map(p => `
+                <a href="blog-post.html?id=${p.id}" class="blog-card-compact">
+                    <span class="bcc-badge ${p.category}">${p.category}</span>
+                    <h2 class="bcc-title">${p.title}</h2>
+                    <div class="bcc-meta">
+                        <span><i class="fas fa-calendar-alt"></i> ${p.date}</span>
+                        <span><i class="fas fa-clock"></i> ${p.readTime} read</span>
+                    </div>
+                </a>
+            `).join('');
+
+            // Pagination
+            if (totalPages <= 1) {
+                pagination.innerHTML = '';
+                return;
+            }
+
+            let btns = '';
+            btns += `<button class="pg-btn" onclick="goPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>
+                        <i class="fas fa-chevron-left"></i>
+                     </button>`;
+            for (let i = 1; i <= totalPages; i++) {
+                btns += `<button class="pg-btn ${i === currentPage ? 'active' : ''}" onclick="goPage(${i})">${i}</button>`;
+            }
+            btns += `<button class="pg-btn" onclick="goPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>
+                        <i class="fas fa-chevron-right"></i>
+                     </button>`;
+            pagination.innerHTML = btns;
+        }
+
+        function goPage(n) {
+            const total = Math.ceil(getFiltered().length / POSTS_PER_PAGE);
+            if (n < 1 || n > total) return;
+            currentPage = n;
+            renderGrid();
+            document.querySelector('.blogs-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-
-                const filter = btn.dataset.filter;
-                let visible = 0;
-
-                cards.forEach(card => {
-                    const match = filter === 'all' || card.dataset.category === filter;
-                    card.style.display = match ? 'flex' : 'none';
-                    if (match) visible++;
-                });
-
-                emptyState.style.display = visible === 0 ? 'block' : 'none';
+                currentFilter = btn.dataset.filter;
+                currentPage = 1;
+                renderGrid();
             });
         });
+
+        renderGrid();
     </script>
-     <script src="js/nav-inject.js"></script>
-     <script src="js/nav.js"></script>
+
+    <script src="js/nav-inject.js"></script>
+    <script src="js/nav.js"></script>
 </body>
 </html>

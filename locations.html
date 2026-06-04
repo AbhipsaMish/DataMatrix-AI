@@ -1,0 +1,345 @@
+ash
+
+cat > /mnt/user-data/outputs/locations.html << 'HTMLEOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Offices – DatamatrixAI</title>
+     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/nav-dropdown.css">
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+
+        .loc-hero {
+            padding-top: 100px;
+            padding-bottom:40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .loc-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 60% 50% at 20% 40%, rgba(0,87,184,0.18) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 40% at 80% 60%, rgba(255,140,0,0.08) 0%, transparent 65%);
+            pointer-events: none;
+        }
+
+        .loc-hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0,87,184,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,87,184,0.05) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        .loc-hero-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+
+        .loc-eyebrow {
+            font-size: 0.73rem;
+            font-weight: 700;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: #FF8C00;
+            margin-bottom: 14px;
+        }
+
+        .loc-hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+
+        .loc-hero h1 span { color: #FF8C00; }
+
+        .loc-hero p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.98rem;
+            color: #9ca3af;
+            line-height: 1.7;
+        }
+
+        .offices-section { padding: 0; }
+
+        .offices-wrap {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .office-card {
+            background: rgba(0,16,50,0.6);
+            border: 1px solid rgba(0,87,184,0.18);
+            border-radius: 20px;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            animation: fadeUp 0.6s ease both;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .office-card:nth-child(2) { animation-delay: 0.1s; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .office-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .office-type-badge {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 3px 11px;
+            border-radius: 50px;
+        }
+
+        .badge-hq {
+            background: rgba(255,140,0,0.12);
+            color: #FF8C00;
+            border: 1px solid rgba(255,140,0,0.28);
+        }
+
+        .badge-dev {
+            background: rgba(0,87,184,0.14);
+            color: #60a5fa;
+            border: 1px solid rgba(0,87,184,0.28);
+        }
+
+        .office-city {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.55rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1.2;
+        }
+
+        .office-city span {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #6b7280;
+            margin-top: 3px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .office-divider {
+            height: 1px;
+            background: rgba(0,87,184,0.12);
+        }
+
+        .office-address-block {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .addr-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 9px;
+            background: rgba(0,87,184,0.1);
+            border: 1px solid rgba(0,87,184,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .addr-icon i { font-size: 0.8rem; color: #0057B8; }
+
+        .addr-lines { display: flex; flex-direction: column; gap: 3px; }
+
+        .addr-company {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #d1d5db;
+        }
+
+        .addr-line {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        .addr-pin {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #9ca3af;
+            margin-top: 2px;
+        }
+
+
+        .info-pill {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            color: #9ca3af;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .info-pill i { font-size: 0.65rem; color: #0057B8; }
+
+
+        .contact-strip-wrap { max-width: 1000px; margin: 40px auto 0; }
+
+        .contact-strip {
+            padding: 32px 36px;
+            background: rgba(0,20,60,0.45);
+            border: 1px solid rgba(0,87,184,0.15);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-strip h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .contact-strip p {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.84rem;
+            color: #6b7280;
+        }
+
+        .contact-strip-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 26px;
+            background: #0057B8;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.84rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .contact-strip-btn:hover { background: #0046a0; transform: translateY(-2px); }
+
+        @media (max-width: 840px) {
+            .offices-wrap { grid-template-columns: 1fr; }
+            .loc-hero h1 { font-size: 2.2rem; }
+        }
+
+        @media (max-width: 560px) {
+            .office-card { padding: 22px; }
+            .contact-strip { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="loc-hero">
+        <div class="loc-hero-inner">
+            <h1>Our <span>Offices</span></h1>
+            </div>
+    </section>
+
+    <section class="offices-section">
+        <div class="offices-wrap">
+
+            <!-- HEAD OFFICE -->
+            <div class="office-card">
+                <div class="office-top">
+                    <span class="office-type-badge badge-hq">Head Office</span>
+                </div>
+                <div class="office-city">
+                    Bangalore
+                    <span>Karnataka, India</span>
+                </div>
+                <div class="office-divider"></div>
+                <div class="office-address-block">
+                    <div class="addr-icon"><i class="fas fa-location-dot"></i></div>
+                    <div class="addr-lines">
+                        <span class="addr-company">Datamatrix.AI Pvt Ltd</span>
+                        <span class="addr-line">D-805, Purva Seasons</span>
+                        <span class="addr-line">CV Raman Nagar</span>
+                        <span class="addr-line">Bangalore, Karnataka</span>
+                        <span class="addr-pin">PIN – 560 093</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DEVELOPMENT CENTER -->
+            <div class="office-card">
+                <div class="office-top">
+                    <span class="office-type-badge badge-dev">Development Center</span>
+                </div>
+                <div class="office-city">
+                    Bhubaneswar
+                    <span>Odisha, India</span>
+                </div>
+                <div class="office-divider"></div>
+                <div class="office-address-block">
+                    <div class="addr-icon"><i class="fas fa-location-dot"></i></div>
+                    <div class="addr-lines">
+                        <span class="addr-company">Datamatrix.AI Pvt Ltd</span>
+                        <span class="addr-line">STPI, Fortune Towers</span>
+                        <span class="addr-line">Maitree Vihar, Chandrasekharpur</span>
+                        <span class="addr-line">Bhubaneswar, Odisha</span>
+                        <span class="addr-pin">PIN – 751 023</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="contact-strip-wrap">
+            <div class="contact-strip">
+                <div>
+                    <h3>Want to visit or get in touch?</h3>
+                    <p>We'd love to hear from you. Reach out and let's start a conversation.</p>
+                </div>
+                <a href="index.html#contact" class="contact-strip-btn">
+                    <i class="fas fa-paper-plane"></i> Contact Us
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/nav-inject.js"></script>
+    <script src="js/nav.js"></script>
+</body>
+</html>
