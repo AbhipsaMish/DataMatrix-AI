@@ -543,3 +543,17 @@ ons new · CSS
         text-align: center;
     }
 }
+/* Force centered layout — override styles.css base .hero rules */
+.hero.hero--fullbg {
+    padding: 0 !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+/* Override the Outfit/left-align from styles.css */
+.hero--fullbg .hero-title {
+    font-family: 'Syne', sans-serif !important;
+    font-size: clamp(2.4rem, 5.5vw, 4.2rem) !important;
+    text-align: center !important;
+    white-space: normal !important;
+}
