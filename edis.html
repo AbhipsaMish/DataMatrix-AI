@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDIS — Enterprise Data Orchestration & Cognitive Intelligence System</title>
+    <meta name="description" content="EDIS is DatamatrixAI's proprietary Decision Intelligence Platform for power DISCOMs and regulated enterprises.">
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/nav-dropdown.css">
+
+    <style>
+        :root {
+            --blue:    #0057B8;
+            --orange:  #FF8C00;
+            --green:   #00A651;
+            --bg:      #05070a;
+            --bg2:     #080e18;
+            --bg3:     #030b16;
+            --border:  rgba(0,87,184,0.18);
+            --border-o:rgba(255,140,0,0.18);
+            --white:   #ffffff;
+            --dim:     rgba(255,255,255,0.58);
+            --dimmer:  rgba(255,255,255,0.35);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* ─── HERO ── */
+        .edis-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 5% 80px;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse 80% 60% at 20% 50%, rgba(0,87,184,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 80% at 80% 30%, rgba(0,87,184,0.07) 0%, transparent 60%),
+                var(--bg);
+        }
+
+        .edis-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(0,87,184,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,87,184,0.04) 1px, transparent 1px);
+            background-size: 52px 52px;
+            pointer-events: none;
+        }
+
+        .edis-hero__inner {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .edis-hero__eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--orange);
+            border: 1px solid rgba(255,140,0,0.28);
+            background: rgba(255,140,0,0.06);
+            padding: 6px 16px;
+            border-radius: 100px;
+            margin-bottom: 32px;
+        }
+
+        .edis-hero__title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 800;
+            line-height: 1.0;
+            letter-spacing: -0.04em;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .edis-hero__title span { color: var(--orange); text-shadow: 0 0 60px rgba(255,140,0,0.3); }
+
+        .edis-hero__fullname {
+            font-size: clamp(0.85rem, 1.4vw, 1rem);
+            font-weight: 300;
+            color: var(--dimmer);
+            letter-spacing: 0.04em;
+            margin-bottom: 28px;
+        }
+
+        .edis-hero__summary {
+            font-size: clamp(1rem, 1.8vw, 1.15rem);
+            font-weight: 300;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.68);
+            max-width: 720px;
+            margin: 0 auto 48px;
+        }
+
+        .edis-hero__stats {
+            display: flex;
+            justify-content: center;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            max-width: 640px;
+            margin: 0 auto;
+            background: rgba(0,20,55,0.4);
+        }
+
+        .edis-stat {
+            flex: 1;
+            min-width: 160px;
+            padding: 24px 20px;
+            text-align: center;
+            border-right: 1px solid var(--border);
+            transition: background 0.3s;
+        }
+        .edis-stat:last-child { border-right: none; }
+        .edis-stat:hover { background: rgba(0,87,184,0.08); }
+
+        .edis-stat__num {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: var(--orange);
+            line-height: 1;
+            margin-bottom: 6px;
+            letter-spacing: -0.02em;
+        }
+
+        .edis-stat__label {
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: var(--dimmer);
+            letter-spacing: 0.04em;
+            line-height: 1.4;
+        }
+
+        /* ─── SECTIONS ── */
+        .edis-section { padding: 96px 5%; position: relative; }
+        .edis-section--alt { background: var(--bg2); }
+        .edis-section--dark { background: var(--bg3); }
+
+        .edis-section__label {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .edis-section__heading {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            line-height: 1.1;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .edis-section__heading em { font-style: normal; color: var(--orange); }
+
+        .edis-section__body {
+            font-size: 1.05rem;
+            font-weight: 300;
+            line-height: 1.85;
+            color: rgba(255,255,255,0.68);
+            max-width: 640px;
+        }
+
+        /* ─── PROBLEM ── */
+        .edis-problem {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .edis-loss-callout {
+            background: rgba(0,20,55,0.5);
+            border: 1px solid var(--border-o);
+            border-radius: 20px;
+            padding: 40px 36px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .edis-loss-callout::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--blue), var(--orange));
+        }
+
+        .edis-loss-callout__num {
+            font-family: 'Syne', sans-serif;
+            font-size: 5rem;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            color: var(--orange);
+            text-shadow: 0 0 60px rgba(255,140,0,0.35);
+            margin-bottom: 8px;
+        }
+
+        .edis-loss-callout__label {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--dim);
+            line-height: 1.5;
+        }
+
+        .edis-loss-callout__sub {
+            font-size: 0.75rem;
+            font-weight: 300;
+            color: var(--dimmer);
+            margin-top: 12px;
+            letter-spacing: 0.04em;
+        }
+
+        .edis-problem__tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .edis-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 14px;
+            border-radius: 100px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.04);
+            font-size: 0.78rem;
+            color: var(--dim);
+        }
+
+        .edis-tag i { color: var(--orange); font-size: 0.72rem; }
+
+        /* ─── STEPS ── */
+        .edis-steps { max-width: 1100px; margin: 0 auto; }
+        .edis-steps__header { max-width: 600px; margin-bottom: 56px; }
+
+        .edis-steps__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .edis-step {
+            background: rgba(0,20,55,0.4);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 36px 28px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .edis-step:hover { border-color: rgba(255,140,0,0.35); transform: translateY(-4px); }
+
+        .edis-step::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 0%; height: 2px;
+            background: linear-gradient(to right, var(--blue), var(--orange));
+            transition: width 0.4s ease;
+        }
+
+        .edis-step:hover::after { width: 100%; }
+
+        .edis-step__num {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            color: rgba(255,255,255,0.15);
+            margin-bottom: 20px;
+        }
+
+        .edis-step__icon {
+            width: 48px; height: 48px;
+            border-radius: 12px;
+            background: rgba(0,87,184,0.12);
+            border: 1px solid rgba(0,87,184,0.28);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: var(--orange);
+            margin-bottom: 20px;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .edis-step:hover .edis-step__icon {
+            background: rgba(255,140,0,0.1);
+            border-color: rgba(255,140,0,0.35);
+        }
+
+        .edis-step__title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .edis-step__desc {
+            font-size: 0.875rem;
+            font-weight: 300;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.65;
+        }
+
+        /* ─── COMPLIANCE ── */
+        .edis-compliance {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .edis-compliance__badges {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .edis-badge {
+            background: rgba(0,20,55,0.5);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px 20px;
+            text-align: center;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .edis-badge:hover { border-color: rgba(0,166,81,0.4); transform: translateY(-3px); }
+
+        .edis-badge__name {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--green);
+            margin-bottom: 6px;
+            letter-spacing: 0.05em;
+        }
+
+        .edis-badge__desc {
+            font-size: 0.75rem;
+            font-weight: 300;
+            color: var(--dimmer);
+            line-height: 1.4;
+        }
+
+        .edis-accuracy {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, rgba(0,166,81,0.08), rgba(0,87,184,0.08));
+            border: 1px solid rgba(0,166,81,0.25);
+            border-radius: 16px;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .edis-accuracy__num {
+            font-family: 'Syne', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--green);
+            flex-shrink: 0;
+        }
+
+        .edis-accuracy__text {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--dim);
+            line-height: 1.5;
+        }
+
+        /* ─── OUTCOMES ── */
+        .edis-outcomes { max-width: 1100px; margin: 0 auto; }
+        .edis-outcomes__header { max-width: 600px; margin-bottom: 56px; }
+
+        .edis-outcomes__grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .edis-outcomes__grid .edis-outcome--wide { grid-column: 1 / -1; }
+
+        .edis-outcome {
+            background: rgba(0,20,55,0.4);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px 28px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .edis-outcome:hover { border-color: rgba(0,166,81,0.3); transform: translateY(-3px); }
+
+        .edis-outcome__icon {
+            width: 44px; height: 44px;
+            flex-shrink: 0;
+            border-radius: 10px;
+            background: rgba(0,166,81,0.08);
+            border: 1px solid rgba(0,166,81,0.22);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: var(--green);
+        }
+
+        .edis-outcome__title {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 6px;
+        }
+
+        .edis-outcome__desc {
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: rgba(255,255,255,0.55);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* ─── PROVEN ── */
+        .edis-proven {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .edis-proven__metrics { display: flex; flex-direction: column; gap: 16px; }
+
+        .edis-metric {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(0,20,55,0.4);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px 24px;
+            transition: border-color 0.3s;
+        }
+
+        .edis-metric:hover { border-color: rgba(255,140,0,0.3); }
+
+        .edis-metric__num {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--orange);
+            min-width: 100px;
+            flex-shrink: 0;
+        }
+
+        .edis-metric__label {
+            font-size: 0.875rem;
+            font-weight: 300;
+            color: var(--dim);
+            line-height: 1.5;
+        }
+
+        /* ─── DIFF TABLE ── */
+        .edis-diff { max-width: 900px; margin: 0 auto; }
+        .edis-diff__header { text-align: center; margin-bottom: 48px; }
+
+        .edis-diff__table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .edis-diff__table thead tr { background: rgba(0,87,184,0.15); }
+
+        .edis-diff__table th {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 18px 24px;
+            text-align: left;
+            color: var(--white);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .edis-diff__table th:nth-child(2) { color: var(--dimmer); }
+        .edis-diff__table th:nth-child(3) { color: var(--orange); }
+
+        .edis-diff__table tbody tr {
+            border-bottom: 1px solid var(--border);
+            transition: background 0.2s;
+        }
+
+        .edis-diff__table tbody tr:last-child { border-bottom: none; }
+        .edis-diff__table tbody tr:hover { background: rgba(0,87,184,0.05); }
+
+        .edis-diff__table td {
+            font-size: 0.875rem;
+            font-weight: 300;
+            padding: 16px 24px;
+            vertical-align: middle;
+            color: var(--dim);
+        }
+
+        .edis-diff__table td:first-child { font-weight: 500; color: var(--white); }
+        .edis-diff__table td .check { color: var(--green); font-size: 1rem; }
+        .edis-diff__table td .cross { color: rgba(255,255,255,0.2); font-size: 1rem; }
+
+        /* ─── PRODUCT FOOTPRINT ── */
+        .edis-footprint {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .edis-footprint__header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .edis-footprint__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+        }
+
+        .edis-footprint__card {
+            background: rgba(0,20,55,0.4);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 36px 28px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .edis-footprint__card:hover {
+            border-color: rgba(255,140,0,0.3);
+            transform: translateY(-4px);
+        }
+
+        .edis-footprint__card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--blue), var(--orange));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .edis-footprint__card:hover::before { opacity: 1; }
+
+        .edis-footprint__card-icon {
+            width: 48px; height: 48px;
+            border-radius: 12px;
+            background: rgba(0,87,184,0.12);
+            border: 1px solid rgba(0,87,184,0.28);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: var(--orange);
+            margin-bottom: 20px;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .edis-footprint__card:hover .edis-footprint__card-icon {
+            background: rgba(255,140,0,0.1);
+            border-color: rgba(255,140,0,0.35);
+        }
+
+        .edis-footprint__card-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 16px;
+        }
+
+        /* Industries list */
+        .edis-industry-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .edis-industry-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 8px 14px;
+            border-radius: 100px;
+            border: 1px solid rgba(0,87,184,0.3);
+            background: rgba(0,87,184,0.08);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.75);
+            transition: all 0.3s;
+        }
+
+        .edis-industry-pill:hover {
+            border-color: var(--orange);
+            background: rgba(255,140,0,0.08);
+            color: var(--white);
+        }
+
+        .edis-industry-pill i {
+            font-size: 0.7rem;
+            color: var(--blue);
+            transition: color 0.3s;
+        }
+
+        .edis-industry-pill:hover i { color: var(--orange); }
+
+        /* Client card */
+        .edis-client {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(0,87,184,0.06);
+            border: 1px solid rgba(0,87,184,0.2);
+            border-radius: 12px;
+            padding: 18px 20px;
+            transition: all 0.3s;
+        }
+
+        .edis-client:hover {
+            border-color: rgba(255,140,0,0.3);
+            background: rgba(255,140,0,0.04);
+        }
+
+        .edis-client__logo {
+            width: 44px; height: 44px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: var(--orange);
+            flex-shrink: 0;
+        }
+
+        .edis-client__name {
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 2px;
+        }
+
+        .edis-client__desc {
+            font-size: 0.75rem;
+            font-weight: 300;
+            color: var(--dimmer);
+        }
+
+        /* Case study placeholder */
+        .edis-cs-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            padding: 32px 20px;
+            border: 1px dashed rgba(255,255,255,0.12);
+            border-radius: 12px;
+            text-align: center;
+            background: rgba(255,255,255,0.02);
+            transition: all 0.3s;
+            cursor: default;
+        }
+
+        .edis-cs-placeholder:hover {
+            border-color: rgba(255,140,0,0.25);
+            background: rgba(255,140,0,0.03);
+        }
+
+        .edis-cs-placeholder__icon {
+            width: 48px; height: 48px;
+            border-radius: 12px;
+            background: rgba(0,87,184,0.08);
+            border: 1px solid rgba(0,87,184,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.25);
+        }
+
+        .edis-cs-placeholder__text {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 300;
+            color: var(--dimmer);
+            line-height: 1.5;
+        }
+
+        .edis-cs-placeholder__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 100px;
+            background: rgba(255,140,0,0.08);
+            border: 1px solid rgba(255,140,0,0.2);
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--orange);
+        }
+
+        /* ─── CTA FOOTER ── */
+        .edis-cta-section {
+            padding: 100px 5%;
+            text-align: center;
+            background: var(--bg3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .edis-cta-section::before {
+            content: '';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px; height: 300px;
+            background: radial-gradient(ellipse, rgba(0,87,184,0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .edis-cta-section__heading {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--white);
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .edis-cta-section__heading em { font-style: normal; color: var(--orange); }
+
+        .edis-cta-section__sub {
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--dimmer);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .edis-cta-section__btns {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .edis-btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 8px;
+            background: var(--blue);
+            color: var(--white);
+            font-size: 0.95rem;
+            font-weight: 500;
+            border: 2px solid var(--blue);
+            transition: all 0.3s;
+            box-shadow: 0 0 24px rgba(0,87,184,0.35);
+        }
+
+        .edis-btn-primary:hover {
+            background: transparent;
+            border-color: var(--orange);
+            color: var(--orange);
+            box-shadow: 0 0 24px rgba(255,140,0,0.25);
+            transform: translateY(-2px);
+        }
+
+        .edis-btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 8px;
+            background: transparent;
+            color: var(--white);
+            font-size: 0.95rem;
+            font-weight: 500;
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: all 0.3s;
+        }
+
+        .edis-btn-secondary:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+            transform: translateY(-2px);
+        }
+
+        /* ─── SCROLL REVEAL ── */
+        .sr {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1),
+                        transform 0.7s cubic-bezier(0.22,1,0.36,1);
+        }
+        .sr.sr--visible { opacity: 1; transform: translateY(0); }
+        .sr--delay-1 { transition-delay: 0.1s; }
+        .sr--delay-2 { transition-delay: 0.2s; }
+        .sr--delay-3 { transition-delay: 0.3s; }
+        .sr--delay-4 { transition-delay: 0.4s; }
+
+        /* ─── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .edis-problem,
+            .edis-compliance,
+            .edis-proven { grid-template-columns: 1fr; gap: 48px; }
+            .edis-steps__grid { grid-template-columns: 1fr; }
+            .edis-outcomes__grid { grid-template-columns: 1fr; }
+            .edis-outcomes__grid .edis-outcome--wide { grid-column: auto; }
+            .edis-footprint__grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 640px) {
+            .edis-hero__stats { flex-direction: column; }
+            .edis-stat { border-right: none; border-bottom: 1px solid var(--border); }
+            .edis-stat:last-child { border-bottom: none; }
+            .edis-compliance__badges { grid-template-columns: 1fr; }
+            .edis-diff__table { font-size: 0.8rem; }
+            .edis-diff__table td, .edis-diff__table th { padding: 12px 14px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Shared nav injected here -->
+<script src="js/nav-inject.js"></script>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="edis-hero">
+    <div class="edis-hero__inner">
+        <div class="edis-hero__eyebrow sr">
+            <i class="fas fa-bolt"></i>
+            Decision Intelligence Platform
+        </div>
+        <h1 class="edis-hero__title sr sr--delay-1">EDIS<span>.</span></h1>
+        <p class="edis-hero__fullname sr sr--delay-2">
+            Enterprise Data Orchestration &amp; Cognitive Intelligence System
+        </p>
+        <p class="edis-hero__summary sr sr--delay-3">
+            DatamatrixAI's proprietary Decision Intelligence Platform deploys a semantic layer
+            directly over your existing data infrastructure — enabling executives to extract
+            precise, real-time intelligence through natural language with zero migration,
+            zero disruption, and zero infrastructure change.
+        </p>
+        <div class="edis-hero__stats sr sr--delay-4">
+            <div class="edis-stat">
+                <div class="edis-stat__num">75–85%</div>
+                <div class="edis-stat__label">Faster data<br>processing</div>
+            </div>
+            <div class="edis-stat">
+                <div class="edis-stat__num">300%</div>
+                <div class="edis-stat__label">ROI delivered<br>to enterprises</div>
+            </div>
+            <div class="edis-stat">
+                <div class="edis-stat__num">99%</div>
+                <div class="edis-stat__label">Accuracy across<br>enterprise data</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════ THE PROBLEM ═══════════ -->
+<section class="edis-section edis-section--alt">
+    <div class="edis-problem">
+        <div class="edis-problem__text sr">
+            <span class="edis-section__label">The Problem We Solve</span>
+            <h2 class="edis-section__heading">Billions lost to<br><em>fragmented data.</em></h2>
+            <p class="edis-section__body">
+                Electricity distribution companies run on decades of fragmented, incompatible
+                data systems. Critical intelligence on AT&amp;C losses, grid performance, customer
+                risk, and compliance remains buried, inaccessible, and unactionable.
+                India's power DISCOMs alone lose 15–40% of revenue annually to AT&amp;C losses
+                driven by electricity theft, metering gaps, and poor billing visibility.
+                Data sits disconnected across SCADA, billing, and field systems — making
+                outage prediction, complaint resolution, and operational decisions slow,
+                reactive, and inaccurate.
+            </p>
+        </div>
+        <div class="edis-problem__visual sr sr--delay-2">
+            <div class="edis-loss-callout">
+                <div class="edis-loss-callout__num">15–40%</div>
+                <div class="edis-loss-callout__label">Annual revenue lost by India's<br>power DISCOMs to AT&amp;C losses</div>
+                <div class="edis-loss-callout__sub">Source: Ministry of Power, India</div>
+            </div>
+            <div class="edis-problem__tags">
+                <span class="edis-tag"><i class="fas fa-circle-xmark"></i> Electricity theft</span>
+                <span class="edis-tag"><i class="fas fa-circle-xmark"></i> Metering gaps</span>
+                <span class="edis-tag"><i class="fas fa-circle-xmark"></i> Poor billing visibility</span>
+                <span class="edis-tag"><i class="fas fa-circle-xmark"></i> Disconnected SCADA</span>
+                <span class="edis-tag"><i class="fas fa-circle-xmark"></i> Slow decisions</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════ WHAT EDIS DOES ═══════════ -->
+<section class="edis-section">
+    <div class="edis-steps">
+        <div class="edis-steps__header sr">
+            <span class="edis-section__label">What EDIS Does</span>
+            <h2 class="edis-section__heading">One semantic layer.<br><em>Total intelligence.</em></h2>
+            <p class="edis-section__body">
+                EDIS deploys a proprietary semantic layer directly over your existing data sources —
+                whether on-premise or cloud — and unifies fragmented data into a single queryable
+                intelligence infrastructure. Unlike conventional BI tools that only visualise data,
+                EDIS reasons across it, converting raw enterprise data into decisions in minutes.
+            </p>
+        </div>
+        <div class="edis-steps__grid">
+            <div class="edis-step sr sr--delay-1">
+                <div class="edis-step__num">01</div>
+                <div class="edis-step__icon"><i class="fas fa-layer-group"></i></div>
+                <h3 class="edis-step__title">Semantic Layer Deployment</h3>
+                <p class="edis-step__desc">Drops directly over your existing data sources. No migration, no disruption, no new infrastructure required.</p>
+            </div>
+            <div class="edis-step sr sr--delay-2">
+                <div class="edis-step__num">02</div>
+                <div class="edis-step__icon"><i class="fas fa-comments"></i></div>
+                <h3 class="edis-step__title">Natural Language Querying</h3>
+                <p class="edis-step__desc">Executives and field managers query complex operational data conversationally, eliminating analyst dependency entirely.</p>
+            </div>
+            <div class="edis-step sr sr--delay-3">
+                <div class="edis-step__num">03</div>
+                <div class="edis-step__icon"><i class="fas fa-brain"></i></div>
+                <h3 class="edis-step__title">Cognitive Reasoning</h3>
+                <p class="edis-step__desc">EDIS doesn't just show data — it reasons across it. Source-attributed insights with full traceability and auditability.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════ HOW EDIS SOLVES IT ═══════════ -->
+<section class="edis-section edis-section--alt">
+    <div class="edis-steps">
+        <div class="edis-steps__header sr">
+            <span class="edis-section__label">How EDIS Solves It</span>
+            <h2 class="edis-section__heading">From fragmented data<br>to <em>decisions in minutes.</em></h2>
+        </div>
+        <div class="edis-steps__grid">
+            <div class="edis-step sr sr--delay-1">
+                <div class="edis-step__num">01</div>
+                <div class="edis-step__icon"><i class="fas fa-magnifying-glass-chart"></i></div>
+                <h3 class="edis-step__title">Real-Time Loss Detection</h3>
+                <p class="edis-step__desc">Cross-correlates meter, billing, and feeder data to pinpoint exact loss pockets in real time.</p>
+            </div>
+            <div class="edis-step sr sr--delay-2">
+                <div class="edis-step__num">02</div>
+                <div class="edis-step__icon"><i class="fas fa-triangle-exclamation"></i></div>
+                <h3 class="edis-step__title">Predictive Outage Intelligence</h3>
+                <p class="edis-step__desc">Predicts outages and asset failures by analysing historical and live operational patterns simultaneously.</p>
+            </div>
+            <div class="edis-step sr sr--delay-3">
+                <div class="edis-step__num">03</div>
+                <div class="edis-step__icon"><i class="fas fa-database"></i></div>
+                <h3 class="edis-step__title">Unified Data Infrastructure</h3>
+                <p class="edis-step__desc">Structured and unstructured data from SCADA, ERP, billing, and field systems unified into one intelligence layer.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════ COMPLIANCE ═══════════ -->
+<section class="edis-section edis-section--dark">
+    <div class="edis-compliance">
+        <div class="sr">
+            <span class="edis-section__label">Built for Regulated Industries</span>
+            <h2 class="edis-section__heading">Natively compliant.<br><em>Fully auditable.</em></h2>
+            <p class="edis-section__body">
+                EDIS is natively compliant with DPDP, HIPAA, and GDPR — ready for deployment
+                in India's most regulated enterprise environments. Every AI output is fully
+                traceable to its originating data source, ensuring complete accountability
+                and auditability.
+            </p>
+        </div>
+        <div class="sr sr--delay-2">
+            <div class="edis-compliance__badges">
+                <div class="edis-badge">
+                    <div class="edis-badge__name">DPDP</div>
+                    <div class="edis-badge__desc">India Digital Personal Data Protection Act</div>
+                </div>
+                <div class="edis-badge">
+                    <div class="edis-badge__name">HIPAA</div>
+                    <div class="edis-badge__desc">Health Insurance Portability &amp; Accountability</div>
+                </div>
+                <div class="edis-badge">
+                    <div class="edis-badge__name">GDPR</div>
+                    <div class="edis-badge__desc">General Data Protection Regulation</div>
+                </div>
+                <div class="edis-accuracy">
+                    <div class="edis-accuracy__num">99%</div>
+                    <div class="edis-accuracy__text">Accuracy across complex enterprise data environments — a new benchmark for responsible AI.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════ OUTCOMES ═══════════ -->
+<section class="edis-section">
+    <div class="edis-outcomes">
+        <div class="edis-outcomes__header sr">
+            <span class="edis-section__label">Measurable Outcomes</span>
+            <h2 class="edis-section__heading">Real impact.<br><em>Measured in revenue.</em></h2>
+        </div>
+        <div class="edis-outcomes__grid">
+            <div class="edis-outcome sr sr--delay-1">
+                <div class="edis-outcome__icon"><i class="fas fa-arrow-trend-up"></i></div>
+                <div>
+                    <h3 class="edis-outcome__title">Direct Revenue Recovery</h3>
+                    <p class="edis-outcome__desc">Organisations experience direct revenue recovery without tariff increases through AT&amp;C loss reduction.</p>
+                </div>
+            </div>
+            <div class="edis-outcome sr sr--delay-2">
+                <div class="edis-outcome__icon"><i class="fas fa-bolt"></i></div>
+                <div>
+                    <h3 class="edis-outcome__title">Reduced Outage Frequency</h3>
+                    <p class="edis-outcome__desc">Significant reduction in outage frequency through predictive asset failure detection and early intervention.</p>
+                </div>
+            </div>
+            <div class="edis-outcome sr sr--delay-1">
+                <div class="edis-outcome__icon"><i class="fas fa-users"></i></div>
+                <div>
+                    <h3 class="edis-outcome__title">Higher Customer Trust</h3>
+                    <p class="edis-outcome__desc">Lower complaint volumes, faster resolution, and improved service reliability drive lasting customer trust.</p>
+                </div>
+            </div>
+            <div class="edis-outcome sr sr--delay-2">
+                <div class="edis-outcome__icon"><i class="fas fa-clock"></i></div>
+                <div>
+                    <h3 class="edis-outcome__title">Decisions in Minutes</h3>
+                    <p class="edis-outcome__desc">Operational decisions that once took weeks are now made in minutes through conversational intelligence.</p>
+                </div>
+            </div>
+            <div class="edis-outcome edis-outcome--wide sr sr--delay-3">
+                <div class="edis-outcome__icon"><i class="fas fa-shield-halved"></i></div>
+                <div>
+                    <h3 class="edis-outcome__title">Reduced Disaster Response Times</h3>
+                    <p class="edis-outcome__desc">Field teams and executives act on unified, real-time intelligence — dramatically reducing response times during grid emergencies, outages, and compliance events.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════ PROVEN IN FIELD ═══════════ -->
+<section class="edis-section edis-section--alt">
+    <div class="edis-proven">
+        <div class="sr">
+            <span class="edis-section__label">Already Proven in the Field</span>
+            <h2 class="edis-section__heading">Deployed.<br>Operational.<br><em>Delivering.</em></h2>
+            <p class="edis-section__body">
+                EDIS is not a concept. It is already deployed and fully operational at leading
+                power DISCOMs across India, delivering measurable impact at scale across
+                AT&amp;C loss reduction, outage management, and operational efficiency.
+            </p>
+        </div>
+        <div class="edis-proven__metrics sr sr--delay-2">
+            <div class="edis-metric">
+                <div class="edis-metric__num">75–85%</div>
+                <div class="edis-metric__label">Faster data processing across all enterprise data environments</div>
+            </div>
+            <div class="edis-metric">
+                <div class="edis-metric__num">100–300%</div>
+                <div class="edis-metric__label">ROI delivered — one of the fastest returns on AI investment available</div>
+            </div>
+            <div class="edis-metric">
+                <div class="edis-metric__num">Zero</div>
+                <div class="edis-metric__label">Data migration, infrastructure change, or operational disruption required</div>
+            </div>
+            <div class="edis-metric">
+                <div class="edis-metric__num">Minutes</div>
+                <div class="edis-metric__label">Time from query to decision — down from days or weeks</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════ WHY EDIS ═══════════ -->
+<section class="edis-section edis-section--dark">
+    <div class="edis-diff">
+        <div class="edis-diff__header sr">
+            <span class="edis-section__label">Why EDIS Stands Apart</span>
+            <h2 class="edis-section__heading">
+                Every other BI tool shows you data.<br><em>EDIS thinks with it.</em>
+            </h2>
+        </div>
+        <div class="sr sr--delay-1">
+            <table class="edis-diff__table">
+                <thead>
+                    <tr>
+                        <th>Capability</th>
+                        <th>Conventional BI</th>
+                        <th>EDIS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Natural language querying</td>
+                        <td><i class="fas fa-xmark cross"></i></td>
+                        <td><i class="fas fa-check check"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Zero data migration</td>
+                        <td><i class="fas fa-xmark cross"></i></td>
+                        <td><i class="fas fa-check check"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Reasons across data (not just displays)</td>
+                        <td><i class="fas fa-xmark cross"></i></td>
+                        <td><i class="fas fa-check check"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Source-attributed, auditable outputs</td>
+                        <td><i class="fas fa-xmark cross"></i></td>
+                        <td><i class="fas fa-check check"></i></td>
+                    </tr>
+                    <tr>
+                        <td>On-premise or cloud deployment</td>
+                        <td>Cloud only</td>
+                        <td><i class="fas fa-check check"></i></td>
+                    </tr>
+                    <tr>
+                        <td>DPDP / HIPAA / GDPR native</td>
+                        <td><i class="fas fa-xmark cross"></i></td>
+                        <td><i class="fas fa-check check"></i></td>
+                    </tr>
+                    <tr>
+                        <td>Predictive outage &amp; asset intelligence</td>
+                        <td><i class="fas fa-xmark cross"></i></td>
+                        <td><i class="fas fa-check check"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════ PRODUCT FOOTPRINT ═══════════ -->
+<section class="edis-section">
+    <div class="edis-footprint">
+        <div class="edis-footprint__header sr">
+            <span class="edis-section__label">Product Footprint</span>
+            <h2 class="edis-section__heading">
+                Where EDIS is<br><em>already deployed.</em>
+            </h2>
+        </div>
+
+        <div class="edis-footprint__grid">
+
+            <!-- Industries -->
+            <div class="edis-footprint__card sr sr--delay-1">
+                <div class="edis-footprint__card-icon">
+                    <i class="fas fa-industry"></i>
+                </div>
+                <div class="edis-footprint__card-title">Industries</div>
+                <div class="edis-industry-list">
+                    <span class="edis-industry-pill">
+                        <i class="fas fa-bolt"></i> Power DISCOM
+                    </span>
+                    <span class="edis-industry-pill">
+                        <i class="fas fa-landmark"></i> BFSI
+                    </span>
+                    <span class="edis-industry-pill">
+                        <i class="fas fa-cart-shopping"></i> Retail
+                    </span>
+                    <span class="edis-industry-pill">
+                        <i class="fas fa-heart-pulse"></i> Healthcare
+                    </span>
+                </div>
+            </div>
+
+            <!-- Clients -->
+            <div class="edis-footprint__card sr sr--delay-2">
+                <div class="edis-footprint__card-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <div class="edis-footprint__card-title">Clients</div>
+                <div class="edis-client">
+                    <div class="edis-client__logo">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div>
+                        <div class="edis-client__name">Tata Power</div>
+                        <div class="edis-client__desc">Power DISCOM · India · Active deployment</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case Studies -->
+            <div class="edis-footprint__card sr sr--delay-3">
+                <div class="edis-footprint__card-icon">
+                    <i class="fas fa-file-lines"></i>
+                </div>
+                <div class="edis-footprint__card-title">Case Studies</div>
+                <div class="edis-cs-placeholder">
+                    <div class="edis-cs-placeholder__icon">
+                        <i class="fas fa-file-circle-plus"></i>
+                    </div>
+                    <p class="edis-cs-placeholder__text">
+                        Detailed case studies coming soon.<br>
+                        Real deployments. Real numbers.
+                    </p>
+                    <span class="edis-cs-placeholder__badge">
+                        <i class="fas fa-clock"></i> Coming Soon
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ═══════════ CTA ═══════════ -->
+<section class="edis-cta-section">
+    <h2 class="edis-cta-section__heading">
+        Ready to recover<br><em>real revenue?</em>
+    </h2>
+    <p class="edis-cta-section__sub">
+        See EDIS deployed in your environment. No migration. No disruption.
+    </p>
+    <div class="edis-cta-section__btns">
+        <a href="index.html#contact" class="edis-btn-primary">
+            Request a Demo <i class="fas fa-arrow-right"></i>
+        </a>
+        <a href="index.html" class="edis-btn-secondary">
+            Back to Home
+        </a>
+    </div>
+</section>
+
+
+<script>
+(function () {
+    const els = document.querySelectorAll('.sr');
+    if (!els.length) return;
+    const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('sr--visible');
+                obs.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.15 });
+    els.forEach(el => obs.observe(el));
+})();
+</script>
+
+<script src="js/nav.js"></script>
+
+</body>
+</html>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,35 +12,24 @@
     <meta property="og:description" content="Enterprise AI solutions and conversational analytics platform.">
     <meta property="og:image" content="https://melc.ai/images/logo.png">
     <meta property="og:url" content="https://melc.ai">
-    <meta property="og:type" content="website">    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="website">
     <meta name="author" content="DatamatrixAI">
     <meta name="publisher" content="DatamatrixAI">
-    
+
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/sections-new.css">
+    <link rel="stylesheet" href="css/nav-dropdown.css">
     <link rel="icon" type="image/png" href="assets/images/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
-    
 </head>
+
 <script src="js/careers.js"></script>
 <script src="js/contact.js"></script>
-    <script>
-        document.querySelectorAll('[data-spotlight]').forEach(card => {
-            card.addEventListener('mousemove', e => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty('--spotlight-x', `${x}px`);
-                card.style.setProperty('--spotlight-y', `${y}px`);
-            });
-        });
-    </script>
-    <script>
+<script>
 (function(){
 const cv=document.getElementById('circuit-canvas');
 if(!cv) return;
@@ -157,9 +145,13 @@ window.addEventListener('resize',resize);
 resize(); frame();
 })();
 </script>
+
 <body>
 
-    <header>
+    <!-- ═══════════════════════════════════════════════════════
+         HEADER (unchanged)
+    ═══════════════════════════════════════════════════════ -->
+     <header>
     <a href="index.html" class="logo-container">
         <img src="assets/images/logo.png" alt="DataMatrix Logo" class="logo">
         <div class="logo-text">
@@ -167,40 +159,112 @@ resize(); frame();
             <div class="tagline-text">Make AI work. Responsibly</div>
         </div>
     </a>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="#products">Products</a></li>
-            <li><a href="#testimonials">Results</a></li>
-            <li><a href="#careers">Careers</a></li>
-            <li><a href="blogs.html">Blogs</a></li>
-            <li><a href="#aboutus">About Us</a></li>
+
+    <nav id="main-nav">
+        <ul class="nav-list">
+
+            <li><a href="index.html" class="nav-link">Home</a></li>
+
+            <li class="nav-item--dropdown">
+                <a href="#" class="nav-link nav-link--has-dropdown">
+                    Products <i class="fas fa-chevron-down nav-chevron"></i>
+                </a>
+                <ul class="nav-dropdown">
+                    <li>
+                        <a href="edis.html" class="nav-dropdown__link">
+                            <span class="nav-dropdown__title">EDIS</span>
+                            <span class="nav-dropdown__sub">Decision Intelligence Platform</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item--dropdown">
+                <a href="#" class="nav-link nav-link--has-dropdown">
+                    Resources <i class="fas fa-chevron-down nav-chevron"></i>
+                </a>
+                <ul class="nav-dropdown">
+                    <li>
+                        <a href="blogs.html" class="nav-dropdown__link">
+                            <span class="nav-dropdown__title">Blogs</span>
+                            <span class="nav-dropdown__sub">Thinking on enterprise AI</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="povs.html" class="nav-dropdown__link">
+                            <span class="nav-dropdown__title">POVs</span>
+                            <span class="nav-dropdown__sub">Our points of view</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="case-studies.html" class="nav-dropdown__link">
+                            <span class="nav-dropdown__title">Case Studies</span>
+                            <span class="nav-dropdown__sub">Real deployments, real results</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item--dropdown">
+                <a href="#" class="nav-link nav-link--has-dropdown">
+                    Company <i class="fas fa-chevron-down nav-chevron"></i>
+                </a>
+                <ul class="nav-dropdown">
+                    <li>
+                        <a href="about.html" class="nav-dropdown__link">
+                            <span class="nav-dropdown__title">About Us</span>
+                            <span class="nav-dropdown__sub">Who we are</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="founders.html" class="nav-dropdown__link">
+                            <span class="nav-dropdown__title">Founders</span>
+                            <span class="nav-dropdown__sub">Meet the team</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="partnerships.html" class="nav-dropdown__link">
+                            <span class="nav-dropdown__title">Partnerships</span>
+                            <span class="nav-dropdown__sub">STPI and beyond</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-dropdown__link nav-dropdown__link--inactive">
+                            <span class="nav-dropdown__title">Accolades</span>
+                            <span class="nav-dropdown__sub">Coming soon</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-dropdown__link nav-dropdown__link--inactive">
+                            <span class="nav-dropdown__title">Gallery &amp; Events</span>
+                            <span class="nav-dropdown__sub">Coming soon</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="locations.html" class="nav-dropdown__link">
+                            <span class="nav-dropdown__title">Office Locations</span>
+                            <span class="nav-dropdown__sub">Bangalore &amp; Bhubaneswar</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
         </ul>
     </nav>
-    <a href="#contact" class="btn-reach">Contact Us</a>
+
+    <!-- Mobile hamburger -->
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+    </button>
+
+    <a href="index.html#contact" class="btn-reach">Contact Us</a>
 </header>
 
-<section class="hero hero--fullbg">
+<section class="hero hero--fullbg" id="home">
 
-    <!-- VIDEO BACKGROUND — sits lowest in the stack -->
-    <video
-        class="hero-bg-video"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="auto"
-    >
-        <source src="assets/your-video.mp4" type="video/mp4">
-    </video>
-
-    <!-- Circuit canvas on top of video, below overlay -->
     <canvas id="circuit-canvas" class="hero-circuit-canvas"></canvas>
-
-    <!-- Dark overlay -->
     <div class="hero-overlay"></div>
 
-    <!-- Content -->
     <div class="hero-center-content">
         <h1 class="hero-title">
             Built on AI. <span class="highlight">Delivered as Products.</span>
@@ -208,29 +272,16 @@ resize(); frame();
         <p class="hero-subtitle">
             Engineering proprietary, production-ready AI products that solve real enterprise problems — responsibly, at scale.
         </p>
-        <div class="hero-cta-group">
-            <a href="#products" class="btn-primary">Explore Products</a>
-            <a href="#contact" class="btn-secondary">Talk to Us</a>
-        </div>
+
+        <!-- hook banner lives inside the hero now -->
+        <div class="hook-inner-embedded">
+    <p class="hook-text-embedded">
+        <span class="hook-word">Real problems.</span>
+        <span class="hook-word">Real products.</span>
+        <span class="hook-word hook-word--roi">Real ROI.</span>
+    </p>
+   </div>
     </div>
-
-</section>
-
-    <!-- ═══════════════════════════════════════════════════════
-         2. HOOK — full-width bold callout banner
-    ═══════════════════════════════════════════════════════ -->
-    <section class="hook-banner">
-        <div class="hook-inner">
-            <p class="hook-text">
-                Real problems. Real products. <span class="hook-highlight">Real ROI.</span>
-            </p>
-        </div>
-    </section>
-
-
-    <!-- ═══════════════════════════════════════════════════════
-         3. BODY COPY — centered column, two paragraphs
-    ═══════════════════════════════════════════════════════ -->
     <section class="body-copy-section">
         <div class="body-copy-column">
             <p>
@@ -241,66 +292,7 @@ resize(); frame();
             </p>
         </div>
     </section>
-
-
-    <!-- ═══════════════════════════════════════════════════════
-         4. WHAT WE DO — horizontal scroll spotlight cards
-             Option A: single row, horizontal scroll on mobile,
-             each card has a spotlight/radial glow on hover
-    ═══════════════════════════════════════════════════════ -->
-    <section id="what-we-do" class="whatwedo-section">
-        <div class="section-header-product">
-            <h2 class="whatwedo-heading">What We Do</h2>
-            <p class="whatwedo-subheading">End-to-end AI services across the full lifecycle.</p>
-        </div>
-
-        <!-- Scroll track — horizontal on all viewports, wraps on large screens -->
-        <div class="whatwedo-scroll-track">
-
-            <div class="spotlight-card" data-spotlight data-num="01">
-                <div class="spotlight-card__glow"></div>
-                <div class="spotlight-card__icon">
-                    <i class="fas fa-chess-knight"></i>
-                </div>
-                <h3 class="spotlight-card__title">AI Strategy &amp; Consulting</h3>
-                <p class="spotlight-card__desc">Aligning business goals, data, and architecture for clear AI roadmaps.</p>
-            </div>
-
-            <div class="spotlight-card" data-spotlight data-num="02">
-                <div class="spotlight-card__glow"></div>
-                <div class="spotlight-card__icon">
-                    <i class="fas fa-microchip"></i>
-                </div>
-                <h3 class="spotlight-card__title">Custom AI &amp; Product Dev</h3>
-                <p class="spotlight-card__desc">Building production-ready solutions using LLMs &amp; Agentic AI.</p>
-            </div>
-
-            <div class="spotlight-card" data-spotlight data-num="03">
-                <div class="spotlight-card__glow"></div>
-                <div class="spotlight-card__icon">
-                    <i class="fas fa-network-wired"></i>
-                </div>
-                <h3 class="spotlight-card__title">Engineering & MLOps</h3>
-                <p class="spotlight-card__desc">Integrating AI into enterprise systems with built-in scalability.</p>
-            </div>
-
-            <div class="spotlight-card" data-spotlight data-num="04">
-                <div class="spotlight-card__glow"></div>
-                <div class="spotlight-card__icon">
-                    <i class="fas fa-graduation-cap"></i>
-                </div>
-                <h3 class="spotlight-card__title">Research & Training</h3>
-                <p class="spotlight-card__desc">Advancing capabilities through applied R&D and team upskilling.</p>
-            </div>
-
-        </div><!-- /.whatwedo-scroll-track -->
-    </section>
-
-
-    <!-- ═══════════════════════════════════════════════════════
-         5. CLOSING LINE — 3-pill row
-    ═══════════════════════════════════════════════════════ -->
-    <section class="closing-pills-section">
+     <section class="closing-pills-section">
         <div class="closing-pills-row">
 
             <div class="closing-pill">
@@ -320,97 +312,84 @@ resize(); frame();
 
         </div>
     </section>
+</section>
 
+
+    <!-- ═══════════════════════════════════════════════════════
+         3. BODY COPY — centered column, two paragraphs
+    ═══════════════════════════════════════════════════════ -->
+    
+
+    <!-- ═══════════════════════════════════════════════════════
+         5. CLOSING LINE — 3-pill row
+    ═══════════════════════════════════════════════════════ -->
+
+
+    <!-- ═══════════════════════════════════════════════════════
+         6. PRODUCTS — existing (unchanged)
+    ═══════════════════════════════════════════════════════ -->
     <section id="products" class="products-section">
-        <div class="section-header-product">
-            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem; color: #fff; font-family: 'Outfit', sans-serif;">Our Products</h2>
-            <p style="text-align: center; color: #94a3b8; max-width: 600px; margin: 0 auto 3rem auto;">Proprietary AI frameworks built for enterprise-scale performance and security.</p>
+
+    <div class="section-header-product">
+        <h2 class="products-heading">Our Product</h2>
+        <p class="products-subheading">Proprietary AI built for enterprise-scale performance and security.</p>
+    </div>
+
+    <div class="product-featured">
+
+        <!-- Left: identity column -->
+        <div class="product-featured__left">
+            <div class="product-featured__icon">
+                <i class="fas fa-brain"></i>
+            </div>
+            <div class="product-featured__name-block">
+                <h3 class="product-featured__name">EDIS</h3>
+                <p class="product-featured__fullname">Enterprise Data Orchestration and Cognitive Intelligence System</p>
+            </div>
+            <a href="edis.html" class="product-featured__cta">
+                Learn More <i class="fas fa-arrow-right"></i>
+            </a>
         </div>
 
-        <div class="products-grid">
-            <div class="product-card">
-                <div class="product-icon-container">
-                    <i class="fas fa-brain"></i>
-                </div>
-                <h3 class="product-title">EDIS</h3>
-                <p class="product-desc">EDIS is an AI-powered Business Intelligence (BI) chatbot platform that extracts strategic and operational insights from unstructured, multimodal business content—including PDFs, PowerPoint presentations, SharePoint files, and Tableau dashboards. It empowers CXOs with real-time answers without waiting on data teams.</p>
-                <a href="#" class="product-link">Learn More <i class="fas fa-arrow-right" style="margin-left: 5px;"></i></a>
-            </div>
+        <!-- Divider -->
+        <div class="product-featured__divider"></div>
 
-            <div class="product-card">
-                <div class="product-icon-container">
-                    <i class="fas fa-drafting-compass"></i>
-                </div>
-                <h3 class="product-title">BoQx</h3>
-                <p class="product-desc">BoQx is an AI-powered image extraction tool that transforms complex CAD drawings into precise Bills of Quantities (BOQs) instantly. Designed for architects and engineers, it automates manual quantity estimation—delivering speed, accuracy, and consistency across projects of any size.</p>
-                <a href="#" class="product-link">Learn More <i class="fas fa-arrow-right" style="margin-left: 5px;"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <section id="testimonials" class="comparison-section">
-        <div class="section-header-product">
-            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem; color: #fff; font-family: 'Outfit', sans-serif;">Results that Speak</h2>
-            <p style="text-align: center; color: #94a3b8; max-width: 600px; margin: 0 auto 3rem auto;">Real-world impact driven by our AI solutions.</p>
-        </div>
-
-        <div class="comparison-grid">
-            <div class="vs-badge">VS</div>
-
-            <div class="col-before">
-                <h3>Before</h3>
-                <div class="problem-item"><i class="fas fa-history"></i> <span>Slow coaching cycles</span></div>
-                <div class="problem-item"><i class="fas fa-face-frown"></i> <span>Low customer satisfaction</span></div>
-                <div class="problem-item"><i class="fas fa-arrow-trend-down"></i> <span>Loss of Revenue</span></div>
-                <div class="problem-item"><i class="fas fa-phone-slash"></i> <span>Inconsistent call quality</span></div>
-                <div class="problem-item"><i class="fas fa-file-circle-xmark"></i> <span>Regulatory compliance risks</span></div>
-            </div>
-
-            <div class="col-after">
-                <h3>After</h3>
-                <div class="solution-item"><i class="fas fa-arrow-trend-up"></i> <span>Higher growth & retention (Increased Revenue)</span></div>
-                <div class="solution-item"><i class="fas fa-bolt"></i> <span><strong>88%</strong> Faster coaching cycles</span></div>
-                <div class="solution-item"><i class="fas fa-face-smile"></i> <span><strong>25%</strong> Improvement in CSAT</span></div>
-                <div class="solution-item"><i class="fas fa-heart"></i> <span>Improved relations & conversations</span></div>
-                <div class="solution-item"><i class="fas fa-exchange-alt"></i> <span>Significant increase in Cross-selling</span></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="careers" class="careers-section">
-        <div class="section-header-product">
-            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem; color: #fff; font-family: 'Outfit', sans-serif;">Careers at DatamatrixAI</h2>
-            
-            <p id="careers-intro" style="text-align: center; color: #94a3b8; max-width: 600px; margin: 0 auto 3rem auto; display: none;">
-                We’re looking for people excited about AI, data, and building products that create real business impact.
+        <!-- Right: content column -->
+        <div class="product-featured__right">
+            <span class="product-featured__label">Summary</span>
+            <p class="product-featured__desc">
+                EDIS is DatamatrixAI's proprietary Decision Intelligence Platform that deploys a semantic layer directly over your existing data infrastructure, enabling executives to extract precise, real-time intelligence through natural language — with zero data migration, zero disruption, and zero infrastructure change.
             </p>
-        </div>
 
-        <div class="container" style="max-width: 900px; margin: 0 auto;">
-            
-            <div id="job-list-container">
+            <!-- Three zero-promise pills -->
+            <div class="product-featured__pills">
+                <div class="product-pill">
+                    <i class="fas fa-database"></i>
+                    <span>Zero Data Migration</span>
                 </div>
-
-            <div id="no-roles-message" class="no-jobs-box">
-                <div class="no-jobs-icon"><i class="fas fa-folder-open"></i></div>
-                <h3 style="color: #fff; margin-bottom: 15px; font-family: 'Outfit', sans-serif;">No Open Roles</h3>
-                <p style="color: #b0c4de; line-height: 1.6; max-width: 600px; margin: 0 auto;">
-                    We don’t have any open positions right now. That said, we’re always interested in meeting people who are passionate about AI, data, and meaningful problem-solving.
-                </p>
-                <div style="margin-top: 30px;">
-                    <a href="mailto:your-email@melc.ai" class="btn-outline" style="border: 1px solid #b0c4de; color: #b0c4de; padding: 10px 20px; border-radius: 20px; text-decoration: none; transition: 0.3s;">Stay in Touch</a>
+                <div class="product-pill">
+                    <i class="fas fa-shield-halved"></i>
+                    <span>Zero Disruption</span>
+                </div>
+                <div class="product-pill">
+                    <i class="fas fa-server"></i>
+                    <span>Zero Infra Change</span>
                 </div>
             </div>
-
         </div>
-    </section>
 
+    </div>
+
+</section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         9. TEAM / ABOUT US — existing (unchanged)
+    ═══════════════════════════════════════════════════════ -->
     <section id="aboutus" class="about-us-section">
         <div class="container">
             <h2 class="section-title2">Our Team</h2>
-            
+
             <div class="team-grid">
-                
                 <div class="team-card">
                     <div class="profile-img-container">
                         <img src="assets/images/george.jpg" alt="George Johnson" class="profile-img">
@@ -418,13 +397,11 @@ resize(); frame();
                     <h3 class="member-name">George Johnson</h3>
                     <h3 class="member-name">Co-Founder</h3>
                     <p class="member-bio">
-                        Experienced leader with expertise in AI strategy and business transformation 
+                        Experienced leader with expertise in AI strategy and business transformation
                         with over 15 years in the technology sector.
                     </p>
                     <div class="social-links">
                         <a href="https://www.linkedin.com/in/georgejohnsonin/" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                        <!--a href="#" class="social-icon"><i class="fab fa-github"></i></a-->
-                        <!--a href="https://x.com/GeorgeJohnsun" class="social-icon"><i class="fab fa-twitter"></i></a-->
                     </div>
                 </div>
 
@@ -435,107 +412,91 @@ resize(); frame();
                     <h3 class="member-name">Radhabaran Mohanty</h3>
                     <h3 class="member-name">Co-Founder</h3>
                     <p class="member-bio">
-                        AI Solutions Evangelist | Enabling Enterprise Transformation across Industries 
+                        AI Solutions Evangelist | Enabling Enterprise Transformation across Industries
                         through the infusion of AI/ML, Deep Learning, Generative AI.
                     </p>
                     <div class="social-links">
                         <a href="https://www.linkedin.com/in/radhabaran-mohanty-50938227/" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                        <!--a href="#" class="social-icon"><i class="fab fa-github"></i></a-->
-                        <!--a href="#" class="social-icon"><i class="fab fa-twitter"></i></a-->
                     </div>
                 </div>
-
             </div>
-
         </div>
     </section>
 
+
+    <!-- ═══════════════════════════════════════════════════════
+         10. CONTACT — existing (unchanged)
+    ═══════════════════════════════════════════════════════ -->
     <section id="contact" class="contact-section">
         <div class="container">
             <h2 class="section-title">Reach Us Here</h2>
-            
-            <div class="contact-wrapper">
-                
-                <div class="form-column">
-                    <!-- <form action="#" method="POST" class="contact-form"> -->
-                    <form id="contactForm" class="contact-form">
 
+            <div class="contact-wrapper">
+                <div class="form-column">
+                    <form id="contactForm" class="contact-form">
                         <div class="form-group">
                             <input type="text" name="name" placeholder="Name" required class="form-input">
                         </div>
-                        
                         <div class="form-group">
                             <input type="email" name="email" placeholder="Email" required class="form-input">
                         </div>
-                        
                         <div class="form-group">
                             <input type="text" name="company" placeholder="Company" class="form-input">
                         </div>
-                        
                         <div class="form-group">
                             <textarea name="message" placeholder="Message" rows="5" required class="form-input"></textarea>
                         </div>
-                        
                         <button type="submit" class="submit-btn">Send Message</button>
                     </form>
                 </div>
-                
+
                 <div class="info-column">
-                    
                     <div class="info-item">
-                        <div class="icon-box">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
+                        <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
                         <div class="info-text">
                             <h4>Address</h4>
                             <p>D-805 Purva Seasons, CV Raman Nagar, Bangalore 560093</p>
                         </div>
                     </div>
-
                     <div class="info-item">
-                        <div class="icon-box">
-                            <i class="fas fa-envelope"></i>
-                        </div>
+                        <div class="icon-box"><i class="fas fa-envelope"></i></div>
                         <div class="info-text">
                             <h4>Email</h4>
                             <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="94f5f0f9fdfad4f0f5e0f5f9f5e0e6fdecf5fdbaf7fbbafdfa">[email&#160;protected]</a></p>
                         </div>
                     </div>
-
                     <div class="info-item">
-                        <div class="icon-box">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
+                        <div class="icon-box"><i class="fas fa-phone-alt"></i></div>
                         <div class="info-text">
                             <h4>Phone</h4>
                             <p>+91 7829440444</p>
                         </div>
                     </div>
-
                     <div class="info-item">
-                        <div class="icon-box">
-                            <i class="fas fa-clock"></i>
-                        </div>
+                        <div class="icon-box"><i class="fas fa-clock"></i></div>
                         <div class="info-text">
                             <h4>Office Hours</h4>
                             <p>Monday - Friday: <strong>9:00 AM - 6:00 PM</strong></p>
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </div>
     </section>
 
+
+    <!-- ═══════════════════════════════════════════════════════
+         FOOTER — existing (unchanged)
+    ═══════════════════════════════════════════════════════ -->
     <footer class="site-footer">
-        <div class="footer-container">       
+        <div class="footer-container">
             <div class="footer-col company-info">
                 <div class="footer-logo">
                     <img src="assets/images/logo.png" alt="DataMatrix AI Logo" class="logo-img">
                     <h2>Datamatrix<span class="highlight">.AI</span></h2>
                 </div>
                 <p class="company-desc">
-                    Transforming businesses through innovative AI solutions that drive 
+                    Transforming businesses through innovative AI solutions that drive
                     growth, efficiency, and competitive advantage.
                 </p>
                 <div class="social-icons">
@@ -561,8 +522,7 @@ resize(); frame();
             <div class="footer-col">
                 <h3 class="footer-heading">Our Products</h3>
                 <ul class="footer-links">
-                    <li><a href="#">EDIS-AI-powered BI</li>
-                    <li><a href="#">BoQx-AI-powered image extraction tool </a></li>
+                    <li><a href="edis.html">EDIS - AI-powered BI</a></li>
                 </ul>
             </div>
 
@@ -590,7 +550,67 @@ resize(); frame();
     </footer>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    
-    
+
+  <!-- nav highlight on scroll + click -->
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const sections = document.querySelectorAll("section[id]");
+        const navLinks = document.querySelectorAll("nav ul li a");
+
+        navLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                navLinks.forEach(item => item.classList.remove("active"));
+                link.classList.add("active");
+            });
+        });
+
+        window.addEventListener("scroll", () => {
+            let current = "";
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                const sectionHeight = section.offsetHeight;
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    current = section.getAttribute("id");
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === `#${current}`) {
+                    link.classList.add("active");
+                }
+            });
+        });
+    });
+    </script>
+   <script>
+(function () {
+    const words = document.querySelectorAll('.hook-word');
+    if (!words.length) return;
+
+    // Use IntersectionObserver so it fires when hero is visible
+    // (covers both page load and if someone navigates back)
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+
+            // stagger each word by 200ms
+            words.forEach((word, i) => {
+                setTimeout(() => {
+                    word.classList.add('revealed');
+                }, 300 + i * 220);
+            });
+
+            observer.disconnect(); // only fire once
+        });
+    }, { threshold: 0.5 });
+
+    // observe the hook container
+    const hook = document.querySelector('.hook-inner-embedded');
+    if (hook) observer.observe(hook);
+})();
+</script>
+
+<script src="js/nav.js"></script>
+
 </body>
 </html>
