@@ -557,3 +557,13 @@ ons new · CSS
     text-align: center !important;
     white-space: normal !important;
 }
+.hero-bg-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;         /* below canvas (z-index 0) and overlay (z-index 1) */
+    opacity: 0.4;       /* tune this — lower = more subtle, higher = more prominent */
+    pointer-events: none;
+}
