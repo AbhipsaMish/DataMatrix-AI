@@ -15,6 +15,10 @@ cat > /mnt/user-data/outputs/locations.html << 'HTMLEOF'
     <link rel="stylesheet" href="css/styles.css">
     <style>
 
+        body {
+            background: #05070a;
+        }
+
         .loc-hero {
             padding-top: 100px;
             padding-bottom:40px;
@@ -56,8 +60,8 @@ cat > /mnt/user-data/outputs/locations.html << 'HTMLEOF'
         }
 
         .loc-hero h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 3rem;
+            font-family: 'Syne', sans-serif;
+   font-size: clamp(1.3rem, 3.5vw, 2.1rem) !important;    
             font-weight: 800;
             color: #fff;
             line-height: 1.1;
@@ -67,7 +71,7 @@ cat > /mnt/user-data/outputs/locations.html << 'HTMLEOF'
         .loc-hero h1 span { color: #FF8C00; }
 
         .loc-hero p {
-            font-family: 'Inter', sans-serif;
+            font-family: 'DMSans', sans-serif;
             font-size: 0.98rem;
             color: #9ca3af;
             line-height: 1.7;
@@ -130,7 +134,7 @@ cat > /mnt/user-data/outputs/locations.html << 'HTMLEOF'
         }
 
         .office-city {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Syne', sans-serif;
             font-size: 1.55rem;
             font-weight: 800;
             color: #fff;
@@ -174,14 +178,14 @@ cat > /mnt/user-data/outputs/locations.html << 'HTMLEOF'
         .addr-lines { display: flex; flex-direction: column; gap: 3px; }
 
         .addr-company {
-            font-family: 'Inter', sans-serif;
+            font-family: 'DMSans', sans-serif;
             font-size: 0.82rem;
             font-weight: 600;
             color: #d1d5db;
         }
 
         .addr-line {
-            font-family: 'Inter', sans-serif;
+            font-family: 'DMSans', sans-serif;
             font-size: 0.82rem;
             color: #6b7280;
             line-height: 1.6;
@@ -227,7 +231,7 @@ cat > /mnt/user-data/outputs/locations.html << 'HTMLEOF'
         }
 
         .contact-strip h3 {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'DMSans', sans-serif;
             font-size: 1.15rem;
             font-weight: 700;
             color: #fff;

@@ -34,8 +34,8 @@
 }
  
 .blogs-hero h1 {
-    font-family: 'Outfit', sans-serif;
-    font-size: 3rem;
+    font-family: 'Syne', sans-serif;
+   font-size: clamp(1.3rem, 3.5vw, 2.1rem) !important;    
     font-weight: 800;
     color: #ffffff;
     line-height: 1.1;
@@ -48,7 +48,7 @@
 }
  
 .blogs-hero-sub {
-    font-size: 0.95rem;
+    font-size: clamp(0.5rem, 2vw, 1.0rem) !important;
     color: #9ca3af;
     line-height: 1.65;
     max-width: 520px;

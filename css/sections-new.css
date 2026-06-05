@@ -9,13 +9,15 @@
    ============================================ */
 .hero--fullbg {
     position: relative;
-    min-height: 100vh;
+    max-height: 140vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0;
+    padding-top: 0px;        /* ← only this, nothing else fighting it */
+    padding-bottom: 0;
+    margin-top: 0;
     overflow: hidden;
     background: linear-gradient(
         to bottom,
@@ -35,12 +37,14 @@
     width: 100%;
     padding-bottom: 0;
     overflow: hidden;
+    padding-top: 0px !important; /* reduce from whatever it is, or add if missing */
+    padding-bottom: 0 !important;
 }
 
 .hero--fullbg .hero-title {
     font-family: 'Syne', sans-serif;
-    font-size: clamp(1.5rem, 3vw, 2.5rem) !important;
-    font-weight: 800;
+   font-size: clamp(1.3rem, 3.5vw, 2.1rem) !important;    
+   font-weight: 800;
     line-height: 1.08;
     letter-spacing: -0.03em;
     text-align: center;
@@ -59,12 +63,12 @@
 /* subtitle */
 .hero--fullbg .hero-subtitle {
     font-family: 'DM Sans', sans-serif;
-    font-size: clamp(1rem, 2vw, 1.2rem) !important;
+    font-size: clamp(0.5rem, 2vw, 1.0rem) !important;
     font-weight: 300;
     color: rgba(255, 255, 255, 0.65);
     line-height: 1.7;
     max-width: 640px;
-    margin: 0 auto 0;
+    margin: 0;
     letter-spacing: 0.01em;
 }
 
@@ -100,7 +104,7 @@
 }
 
 .hook-highlight-embedded {
-    color: #FF8C00;
+    color: 	#00A651;
     text-shadow: 0 0 30px rgba(255, 140, 0, 0.45);
     position: relative;
     white-space: nowrap;
@@ -182,30 +186,114 @@
 /* ============================================
    BODY COPY SECTION
    ============================================ */
+/* ── Body Copy Section Wrapper ── */
 .body-copy-section {
     background: transparent;
-    margin-top:50px;
+    margin-top: 20px; /* Generous spacing below your ROI header component */
+    margin-left:70px;
+    padding: 25px 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    max-width:1000px;
 }
 
-.body-copy-column {
-    max-width: 720px;
-    margin: 0 auto;
-    text-align: center;
+/* ── The Pillars Grid Container ── */
+.corporate-pillars-container {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    max-width: 1100px;
+    width: 100%;
+    gap: 48px;
 }
 
-.body-copy-column p {
+/* ── Individual Feature Pillars ── */
+.corporate-pillar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left; /* Left-aligned content is the standard for scannable corporate reports */
+}
+
+/* ── Pillar Meta Headers ── */
+.pillar-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 16px;
+}
+
+.pillar-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #FF8C00; /* Subtle tie-in to your primary action color */
+    letter-spacing: 0.05em;
+}
+
+.pillar-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+    margin: 0;
+}
+
+/* ── Pillar Body Copy Typography ── */
+.pillar-body {
     font-family: 'DM Sans', sans-serif;
-    font-size: clamp(1rem, 1.6vw, 1.125rem);
-    font-weight: 300;
-    line-height: 1.85;
-    color: rgba(255, 255, 255);
-    margin-bottom: 1.6rem;
-    letter-spacing: 0.01em;
-    z-index:2;
+    font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+    font-weight: 400;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.65); /* Elegant, readable off-white */
+    margin: 0;
+    letter-spacing: -0.005em;
 }
 
-.body-copy-column p:last-child {
-    margin-bottom: 0;
+/* ── Minimalist Architectural Divider ── */
+.pillar-divider {
+    width: 1px;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.15) 20%,
+        rgba(255, 255, 255, 0.15) 80%,
+        rgba(255, 255, 255, 0) 100*
+    );
+    align-self: stretch;
+}
+
+/* ── Responsive Architecture for Mobile Devices ── */
+@media (max-width: 868px) {
+    .body-copy-section {
+        margin-top: 50px;
+        padding: 20px;
+    }
+
+    .corporate-pillars-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .pillar-divider {
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0) 0%,
+            rgba(255, 255, 255, 0.1) 50%,
+            rgba(255, 255, 255, 0) 100%
+        );
+    }
+    
+    .pillar-header {
+        margin-bottom: 14px;
+        padding-bottom: 12px;
+    }
 }
 
 /* ============================================
@@ -213,8 +301,8 @@
    ============================================ */
 .products-heading {
     font-family: 'Syne', sans-serif;
-    font-size: clamp(1.8rem, 3vw, 2.5rem);
-    font-weight: 800;
+   font-size: clamp(1.3rem, 3.5vw, 2.1rem) !important;    
+    font-weight: 700;
     color: #ffffff;
     text-align: center;
     letter-spacing: -0.02em;
@@ -496,3 +584,99 @@
         text-align: center;
     }
 }
+
+/* experiment w gemini */
+
+/* ── Corporate Metric Container ── */
+.corporate-metric-hook {
+    margin-top: 30px;
+    display: inline-flex;
+    align-items: flex-start;
+    justify-content: center;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 20px 40px;
+    gap: 40px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Individual Data Blocks */
+.metric-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+/* Elegant Micro-Labels */
+.metric-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 0px;
+    font-weight: 600;
+}
+
+/* Premium Typography Headings */
+.metric-text {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+    margin: 0;
+}
+
+/* ── Corporate Color Hierarchy ── */
+
+/* Muted Industrial tone for Phase 1 */
+.text--muted {
+    color: #4A4A4A;
+}
+
+/* Stark pristine silver-white for Phase 2 */
+.text--clear {
+    color:  #0056B3;
+}
+
+/* High-contrast Enterprise Orange for Phase 3 (The Punchline) */
+.text--accent {
+    background: #28A745;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Clean Architectural Dividers */
+.metric-splitter {
+    width: 1px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.1);
+    align-self: center;
+}
+
+/* ── Responsive Architecture for Corporate Mobile ── */
+@media (max-width: 768px) {
+    .corporate-metric-hook {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 24px;
+        padding: 24px;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .metric-row {
+        align-items: center;
+        text-align: center;
+    }
+
+    .metric-splitter {
+        width: 100%;
+        height: 1px;
+    }
+}
+
