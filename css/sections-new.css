@@ -51,10 +51,9 @@
 
 .hero--fullbg .hero-title .highlight {
     color: #FF8C00;
-    text-shadow:
-        0 0 40px rgba(255, 140, 0, 0.45),
-        0 0 80px rgba(255, 140, 0, 0.2);
         white-space: nowrap;
+            text-shadow: none;
+
 }
 
 /* subtitle */
