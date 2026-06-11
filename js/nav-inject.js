@@ -14,7 +14,7 @@ const NAV_HTML = `
 
     <nav id="main-nav">
         <ul class="nav-list">
-            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="index.html" class="nav-link" style="padding-right: 22px;">Home</a></li>
 
             <li class="nav-item--dropdown">
                 <a href="#" class="nav-link nav-link--has-dropdown">

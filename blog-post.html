@@ -19,9 +19,65 @@
             z-index: 9999 !important;
             background: rgba(0,10,30,0.95) !important;
         }
+        #read-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(to right, #0057B8, #FF8C00);
+    z-index: 99999;
+    transition: width 0.1s linear;
+}
+
+/* Author avatar */
+.post-author-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.post-author-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    border: 2px solid rgba(0, 87, 184, 0.4);
+    background: rgba(0, 20, 55, 0.5);
+}
+
+.post-author-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+}
+
+.post-author-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.post-author-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.post-author-role {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.4);
+}
     </style>
 </head>
 <body>
+    <div id="read-progress"></div>
     <!-- TWO-COLUMN LAYOUT: sidebar + post content -->
     <div class="post-layout" id="postLayout">
 
@@ -55,16 +111,30 @@
         ================================================ */
 
         const posts = [
-            {
-                id: 1,
-                category: "",
-                date: "",
-                readTime: "",
-                author: "",
-                authorRole: "",
-                title: "",
-                tags: ["AI Strategy", "Enterprise", "Consulting"]
-            }
+         {
+        id: 1,
+        category: "Strategy",
+        date: "Jun 5, 2026",
+        readTime: "6 min",
+        author: "George Johnson",
+        authorRole: "Co-Founder, DatamatrixAI",
+        authorPhoto: "assets/images/george.jpg",
+        title: "Why Most Enterprise AI Projects Fail Before They Start",
+        tags: ["AI Strategy", "Enterprise", "Adoption"],
+        body: `...keep your existing body content...`
+    },
+    {
+        id: 2,
+        category: "Engineering",
+        date: "May 28, 2026",
+        readTime: "8 min",
+        author: "Radhabaran Mohanty",
+        authorRole: "Co-Founder, DatamatrixAI",
+        authorPhoto: "assets/images/radha.jpg",
+        title: "Semantic Layers: The Missing Piece in Enterprise Data Architecture",
+        tags: ["Engineering", "Data Architecture", "Semantic AI"],
+        body: `...keep your existing body content...`
+    }
         ];
 
         /* ================================================
@@ -87,38 +157,50 @@
         }
 
         function renderPost(post) {
-            document.getElementById('pageTitle').textContent = post.title + ' – DatamatrixAI';
-            renderSidebar(post.id);
-            document.getElementById('postMain').innerHTML = `
-                <article class="post-article">
-                    <div class="post-header">
-                        <div class="post-header-meta">
-                            <span class="blog-category-badge ${post.category.toLowerCase()}">${post.category}</span>
-                            <span class="post-meta-item"><i class="fas fa-calendar-alt"></i> ${post.date}</span>
-                            <span class="post-meta-item"><i class="fas fa-clock"></i> ${post.readTime}</span>
-                        </div>
-                        <h1 class="post-title">${post.title}</h1>
-                        <div class="post-author-row">
-                            <div class="post-author-info">
-                                <span class="post-author-name">${post.author}</span>
-                                <span class="post-author-role">${post.authorRole}</span>
-                            </div>
-                        </div>
-                        <div class="blog-tags" style="margin-top: 1rem;">
-                            ${post.tags.map(t => `<span class="blog-tag">${t}</span>`).join('')}
-                        </div>
+    document.getElementById('pageTitle').textContent = post.title + ' – DatamatrixAI';
+    renderSidebar(post.id);
+    document.getElementById('postMain').innerHTML = `
+        <article class="post-article">
+
+            <div class="post-header">
+                <div class="post-header-meta">
+                    <span class="blog-category-badge ${post.category.toLowerCase()}">${post.category}</span>
+                    <span class="post-meta-item"><i class="fas fa-calendar-alt"></i> ${post.date}</span>
+                    <span class="post-meta-item"><i class="fas fa-clock"></i> ${post.readTime}</span>
+                </div>
+                <h1 class="post-title">${post.title}</h1>
+
+                <!-- AUTHOR ROW WITH AVATAR -->
+                <div class="post-author-row">
+                    <div class="post-author-avatar">
+                        <img src="${post.authorPhoto}" alt="${post.author}">
                     </div>
-                    <div class="post-body">
-                        ${post.body}
+                    <div class="post-author-info">
+                        <span class="post-author-name">${post.author}</span>
+                        <span class="post-author-role">${post.authorRole}</span>
                     </div>
-                    <div class="post-footer-nav">
-                        <a href="blogs.html" class="post-back-link">
-                            <i class="fas fa-arrow-left"></i> Back to all posts
-                        </a>
-                    </div>
-                </article>
-            `;
-        }
+                </div>
+
+                <div class="blog-tags" style="margin-top: 1rem;">
+                    ${post.tags.map(t => `<span class="blog-tag">${t}</span>`).join('')}
+                </div>
+            </div>
+
+            <div class="post-body">
+                ${post.body}
+            </div>
+
+            <div class="post-footer-nav">
+                <a href="blogs.html" class="post-back-link">
+                    <i class="fas fa-arrow-left"></i> Back to all posts
+                </a>
+            </div>
+        </article>
+    `;
+
+    // start progress bar after post renders
+    initProgressBar();
+}
 
         function renderNotFound() {
             renderSidebar(-1);
@@ -137,6 +219,20 @@
         const id = getPostId();
         const post = posts.find(p => p.id === id);
         post ? renderPost(post) : renderNotFound();
+
+        function initProgressBar() {
+    const bar = document.getElementById('read-progress');
+    const article = document.querySelector('.post-article');
+    if (!bar || !article) return;
+
+    window.addEventListener('scroll', () => {
+        const articleTop = article.offsetTop;
+        const articleHeight = article.offsetHeight;
+        const scrolled = window.scrollY - articleTop;
+        const percent = Math.min(100, Math.max(0, (scrolled / articleHeight) * 100));
+        bar.style.width = percent + '%';
+    });
+}
     </script>
 <script src="js/nav-inject.js"></script>
     <script src="js/nav.js"></script>   
