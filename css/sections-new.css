@@ -43,9 +43,8 @@
 
 .hero--fullbg .hero-title {
     font-family: 'Syne', sans-serif;
-   font-size: clamp(1.3rem, 3.5vw, 2.1rem) !important;    
-   font-weight: 800;
-    line-height: 1.08;
+font-size: 3rem !important;   
+ line-height: 1.08;
     letter-spacing: -0.03em;
     text-align: center;
     color: #ffffff;

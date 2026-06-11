@@ -10,8 +10,8 @@
 
 .nav-dropdown {
     position: absolute;
-    top: calc(100% + 12px);
-    left: 50%;
+    top: calc(100% + 2px);   /* reduced gap */
+    padding-top: 12px;        /* padding inside keeps the arrow visual */    left: 50%;
     transform: translateX(-50%) translateY(-6px);
     min-width: 220px;
     background: rgba(8, 12, 24, 0.92);
@@ -45,6 +45,15 @@
     border-top: 1px solid rgba(255, 255, 255, 0.07);
 }
 
+.nav-item--dropdown::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 14px; /* covers the gap */
+}
+
 /* Open state */
 .nav-item--dropdown:hover .nav-dropdown,
 .nav-item--dropdown.open .nav-dropdown {
@@ -76,9 +85,8 @@
     color: #ffffff;
     transition: color 0.2s ease;
 }
-
 .nav-dropdown__link:hover .nav-dropdown__title {
-    color: #FF8C00;
+    color: #ffffff; /* stays white, no orange */
 }
 
 .nav-dropdown__sub {

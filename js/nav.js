@@ -1,21 +1,30 @@
 // js/nav.js
-// Handles dropdown open/close and mobile hamburger
-
 (function () {
 
-    // ── DESKTOP: click to toggle dropdowns ──
     const dropdownItems = document.querySelectorAll('.nav-item--dropdown');
+    const isMobile = () => window.innerWidth <= 900;
 
+    // ── DESKTOP: hover only ──
     dropdownItems.forEach(item => {
-        const trigger = item.querySelector('.nav-link--has-dropdown');
 
+        item.addEventListener('mouseenter', () => {
+            if (isMobile()) return;
+            dropdownItems.forEach(i => i.classList.remove('open'));
+            item.classList.add('open');
+        });
+
+        item.addEventListener('mouseleave', () => {
+            if (isMobile()) return;
+            item.classList.remove('open');
+        });
+
+        // ── MOBILE: tap to toggle ──
+        const trigger = item.querySelector('.nav-link--has-dropdown');
         trigger.addEventListener('click', e => {
+            if (!isMobile()) return; // desktop — do nothing on click
             e.preventDefault();
             const isOpen = item.classList.contains('open');
-
-            // close all others first
             dropdownItems.forEach(i => i.classList.remove('open'));
-
             if (!isOpen) item.classList.add('open');
         });
     });
@@ -37,19 +46,4 @@
             nav.classList.toggle('nav--open');
         });
     }
-
-    // ── ACTIVE STATE: highlight current page ──
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('.nav-link, .nav-dropdown__link').forEach(link => {
-        const href = link.getAttribute('href');
-        if (href && href !== '#' && currentPath === href.split('/').pop()) {
-            link.classList.add('active');
-            // also mark parent dropdown trigger as active
-            const parent = link.closest('.nav-item--dropdown');
-            if (parent) {
-                parent.querySelector('.nav-link')?.classList.add('active');
-            }
-        }
-    });
-
 })();

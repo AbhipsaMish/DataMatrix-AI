@@ -117,10 +117,6 @@ nav {
     background: rgba(255, 255, 255, 0.05);
 }
 
-.nav-link.active {
-    color: var(--accent-orange);
-}
-
 .nav-chevron {
     font-size: 0.6rem;
     transition: transform 0.25s ease;
