@@ -45,7 +45,7 @@
     .sec-heading { font-family: 'Syne', sans-serif; font-size: 2.5rem !important; font-weight: 500; letter-spacing: -0.025em; line-height: 1.15; color: var(--white); margin-bottom: 36px; }
     .sec-heading em { font-style: normal; color: var(--orange); }
 
-    /* ── PARTNER CARDS (Sleeker 2-Column Grid) ── */
+    /* ── PARTNER CARDS GRID ── */
     .partners-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -53,7 +53,6 @@
     }
 
     .partner-card {
-        min-height: 300px;
         background: rgba(0,20,55,0.35);
         border: 1px solid var(--border);
         border-radius: 16px;
@@ -66,6 +65,25 @@
         cursor: pointer;
         text-decoration: none;
         transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+
+    /* Vertical matching height rules for standard cards */
+    .partner-card:not(.partner-card--full) {
+        min-height: 300px;
+    }
+
+    /* Full-width Rectangular Layout with balanced top-to-bottom layout hierarchy */
+    .partner-card--full {
+        grid-column: span 2;
+        gap: 24px;
+    }
+
+    /* Clean row layout for the header contents */
+    .partner-card__header {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        width: 100%;
     }
 
     .partner-card:hover {
@@ -88,7 +106,7 @@
         transition: filter 0.3s, opacity 0.3s, border-color 0.3s, background 0.3s, box-shadow 0.3s;
     }
 
-    /* Default logo behavior (e.g., BharatNetra / FontAwesome Icon states) */
+    /* Default logo behavior */
     .partner-card__logo-box:not(.partner-card__logo-box--stpi):not(.partner-card__logo-box--itel) {
         background: rgba(0, 87, 184, 0.1);
         color: var(--blue);
@@ -105,11 +123,9 @@
         background: #ffffff !important;
         padding: 10px;
     }
-
     
     .partner-card:hover .partner-card__logo-box--stpi { border-color: var(--blue); }
     .partner-card:hover .partner-card__logo-box--itel { border-color: var(--orange); }
-
 
     .partner-card__logo-box img {
         width: 100%;
@@ -126,12 +142,25 @@
         line-height: 1.25;
     }
 
+    /* Make the title stand out beautifully in horizontal rows */
+    .partner-card--full .partner-card__name {
+        font-size: 1.4rem;
+    }
+
     .partner-card__desc {
         font-size: 0.92rem;
         font-weight: 300;
         color: var(--dim);
         line-height: 1.7;
         flex: 1;
+    }
+
+    /* Line spacings inside the body text block */
+    .partner-card__desc p {
+        margin-bottom: 12px;
+    }
+    .partner-card__desc p:last-child {
+        margin-bottom: 0;
     }
 
     .partner-card__link {
@@ -160,6 +189,7 @@
         .partners-grid { grid-template-columns: 1fr; gap: 24px; } 
         .section { padding: 60px 0; } 
         .partner-card { min-height: 0; padding: 28px 24px; } 
+        .partner-card__header { flex-direction: column; align-items: flex-start; gap: 16px; }
     }
 </style>
 </head>
@@ -182,17 +212,17 @@
 
             <!-- STPI -->
             <a href="https://www.stpi.in" target="_blank" rel="noopener noreferrer" class="partner-card sr sr--d1">
-                <div class="partner-card__logo-box">
+                <div class="partner-card__logo-box partner-card__logo-box--stpi">
                      <img src="assets/images/stpi-logo.png" alt="STPI Logo">
                 </div>
                 <div class="partner-card__name">Software Technology Parks of India</div>
-                <p class="partner-card__desc">
+                <div class="partner-card__desc">
                     Datamatrix.AI is a registered startup under the Software Technology Parks of India (STPI),
                     an autonomous body under the Ministry of Electronics &amp; Information Technology,
                     Government of India. STPI supports India's technology sector through infrastructure,
                     policy, and ecosystem development — and recognises Datamatrix.AI as part of its
                     cohort of enterprise AI innovators driving India's digital transformation.
-                </p>
+                </div>
                 <div class="partner-card__link">
                     Learn More <i class="fas fa-arrow-right"></i>
                 </div>
@@ -204,30 +234,30 @@
                     <img src="assets/images/bharatnetra-logo.png" alt="BharatNetra Logo">
                 </div>
                 <div class="partner-card__name">BharatNetra FinTech Centre of Excellence</div>
-                <p class="partner-card__desc">
-                    The Centre of Excellence (CoE) at the Odisha Technology Centre in Bhubaneswar is the heart
-                    of the BharatNetra Innovation Hub. Dedicated to driving digital transformation, the CoE
-                    provides a high-velocity environment where FinTech and InsurTech ventures receive
-                    structured incubation, mentorship, and a direct pathway to market readiness and global access.
-                </p>
+                <div class="partner-card__desc">
+                    Datamatrix.AI Pvt. Ltd. has been selected for the prestigious BharatNetra FinTech Centre of Excellence accelerator program at 
+                    the Odisha Technology Centre, Bhubaneswar. As one of the country's emerging innovation hubs for FinTech and InsurTech, the CoE 
+                    provides strategic mentorship, structured incubation, and pathways to market readiness and global opportunities. This recognition 
+                    reinforces our commitment to building AI-driven solutions that create measurable impact and accelerate digital transformation.
+                </div>
                 <div class="partner-card__link">
                     Learn More <i class="fas fa-arrow-right"></i>
                 </div>
             </a>
 
-            <!-- ITEL Foundation -->
-            <a href="https://itelfoundation.in" target="_blank" rel="noopener noreferrer" class="partner-card sr sr--d3">
-                <div class="partner-card__logo-box partner-card__logo-box--itel">
-                    <img src="assets/images/itel-logo.png" alt="ITEL Foundation Logo">
+            <!-- ITEL Foundation (Optimized Full-Width Layout) -->
+            <a href="https://itelfoundation.in" target="_blank" rel="noopener noreferrer" class="partner-card partner-card--full sr sr--d3">
+                <div class="partner-card__header">
+                    <div class="partner-card__logo-box partner-card__logo-box--itel">
+                        <img src="assets/images/itel-logo.png" alt="ITEL Foundation Logo">
+                    </div>
+                    <div class="partner-card__name">ITEL Foundation</div>
                 </div>
-                <div class="partner-card__name">ITEL Foundation</div>
-                <p class="partner-card__desc">
-                    Datamatrix.AI has been selected for incubation at the Immersive Technology and
-                    Entrepreneurship Labs (ITEL) Foundation — a non-profit built on the premise that
-                    India's unique challenges of high population density and low household incomes
-                    can propel it to the forefront of global technology innovation, positioning India
-                    as an exporter of technology leadership, not just an importer.
-                </p>
+                <div class="partner-card__desc">
+                    <p>We are proud to announce that Datamatrix.AI has been selected for incubation at the Immersive Technology and Entrepreneurship Labs (ITEL) Foundation — a non-profit organization established with a bold and defining mission: to make India a global technology leader in select areas.</p>
+                    <p>ITEL operates on a powerful premise — that India's unique challenges of high population density and low household incomes, long considered unsolvable, are precisely the problems that can propel India to the forefront of global technology innovation. By building and deploying solutions at scale domestically and extending them to nations facing similar challenges, ITEL aims to position India as an exporter of technology leadership, not just an importer.</p>
+                    <p>Being selected as an ITEL incubatee is a validation of Datamatrix.AI's vision and our commitment to building AI products that address real-world, complex problems. We look forward to contributing to this national mission and to building AI solutions that matter — for India and for the world.</p>
+                </div>
                 <div class="partner-card__link">
                     Learn More <i class="fas fa-arrow-right"></i>
                 </div>
