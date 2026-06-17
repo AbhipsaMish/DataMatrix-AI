@@ -1,6 +1,3 @@
-bash
-
-cat > /mnt/user-data/outputs/partnerships.html << 'EOF'
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,252 +10,158 @@ cat > /mnt/user-data/outputs/partnerships.html << 'EOF'
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --blue:   #0057B8;
-            --orange: #FF8C00;
-            --green:  #00A651;
-            --bg:     #05070a;
-            --bg2:    #080e18;
-            --bg3:    #030b16;
-            --border: rgba(0,87,184,0.18);
-            --white:  #ffffff;
-            --dim:    rgba(255,255,255,0.60);
-            --dimmer: rgba(255,255,255,0.32);
-        }
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--white); overflow-x: hidden; }
-        a { text-decoration: none; color: inherit; }
+    :root {
+        --blue:   #0057B8;
+        --orange: #FF8C00;
+        --green:  #00A651;
+        --bg:     #05070a;
+        --bg2:    #080e18;
+        --bg3:    #030b16;
+        --border: rgba(0,87,184,0.18);
+        --white:  #ffffff;
+        --dim:    rgba(255,255,255,0.60);
+        --dimmer: rgba(255,255,255,0.32);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--white); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+
+    /* HERO */
+    .pg-hero { padding: 120px 5% 40px; text-align: center; position: relative; overflow: hidden; background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(0,87,184,0.08) 0%, transparent 65%), var(--bg); }
+    .pg-hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(0,87,184,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,87,184,0.03) 1px, transparent 1px); background-size: 52px 52px; pointer-events: none; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--orange); border: 1px solid rgba(255,140,0,0.26); background: rgba(255,140,0,0.05); padding: 5px 14px; border-radius: 100px; margin-bottom: 10px; position: relative; }
+    .pg-hero__title { font-family: 'Syne', sans-serif; font-size: 3rem !important; font-weight: 600; letter-spacing: -0.03em; line-height: 1.08; color: var(--white); margin-bottom: 16px; position: relative; }
+    .pg-hero__title em { font-style: normal; color: var(--orange); }
+    .pg-hero__sub { font-size: clamp(0.9rem, 1.6vw, 1.05rem); font-weight: 300; color: var(--dim); max-width: 480px; margin: 0 auto; line-height: 1.75; position: relative; }
+
+    /* SECTION */
+    .section { padding-bottom:100px; padding-top:10px; position: relative; }
+    .section::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(0,87,184,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,87,184,0.03) 1px, transparent 1px); background-size: 52px 52px; pointer-events: none; }
+    .section--alt { background: var(--bg2); }
+    .section--dark { background: var(--bg3); }
+    .section__inner { max-width: 1060px; margin: 0 auto; padding: 0 20px; }
+    .sec-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange); display: block; margin-bottom: 10px; }
+    .sec-heading { font-family: 'Syne', sans-serif; font-size: 2.5rem !important; font-weight: 500; letter-spacing: -0.025em; line-height: 1.15; color: var(--white); margin-bottom: 36px; }
+    .sec-heading em { font-style: normal; color: var(--orange); }
+
+    /* ── PARTNER CARDS (Sleeker 2-Column Grid) ── */
+    .partners-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 28px;
+    }
+
+    .partner-card {
+        min-height: 300px;
+        background: rgba(0,20,55,0.35);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 32px 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        text-decoration: none;
+        transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    }
+
+    .partner-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Uniform Square Logo Box Base Layout */
+    .partner-card__logo-box {
+        width: 90px;
+        height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.6rem;
+        flex-shrink: 0;
+        overflow: hidden;
+        opacity: 1;
+        border-radius: 12px;
+        transition: filter 0.3s, opacity 0.3s, border-color 0.3s, background 0.3s, box-shadow 0.3s;
+    }
+
+    /* Default logo behavior (e.g., BharatNetra / FontAwesome Icon states) */
+    .partner-card__logo-box:not(.partner-card__logo-box--stpi):not(.partner-card__logo-box--itel) {
+        background: rgba(0, 87, 184, 0.1);
+        color: var(--blue);
+    }
+
+    /* ── STPI Logo Box Variant ── */
+    .partner-card__logo-box--stpi {
+        background: #ffffff !important;
+        padding: 10px;
+    }
+
+    /* ── ITEL Logo Box Variant ── */
+    .partner-card__logo-box--itel {
+        background: #ffffff !important;
+        padding: 10px;
+    }
+
+    
+    .partner-card:hover .partner-card__logo-box--stpi { border-color: var(--blue); }
+    .partner-card:hover .partner-card__logo-box--itel { border-color: var(--orange); }
 
 
-        /* HERO */
-        .pg-hero { padding: 120px 5% 40px; text-align: center; position: relative; overflow: hidden; background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(0,87,184,0.08) 0%, transparent 65%), var(--bg); }
-        .pg-hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(0,87,184,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,87,184,0.03) 1px, transparent 1px); background-size: 52px 52px; pointer-events: none; }
-        .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--orange); border: 1px solid rgba(255,140,0,0.26); background: rgba(255,140,0,0.05); padding: 5px 14px; border-radius: 100px; margin-bottom: 10px; position: relative; }
-        .pg-hero__title { font-family: 'Syne', sans-serif;    font-size: clamp(1.3rem, 3.5vw, 2.1rem) !important;    
-; font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; color: var(--white); margin-bottom: 16px; position: relative; }
-        .pg-hero__title em { font-style: normal; color: var(--orange); }
-        .pg-hero__sub { font-size: clamp(0.9rem, 1.6vw, 1.05rem); font-weight: 300; color: var(--dim); max-width: 480px; margin: 0 auto; line-height: 1.75; position: relative; }
+    .partner-card__logo-box img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
 
+    .partner-card__name {
+        font-family: 'Syne', sans-serif;
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: var(--white);
+        letter-spacing: -0.015em;
+        line-height: 1.25;
+    }
 
-        /* SECTION */
-        .section { padding-bottom:80px; padding-top:10px }
-       .section::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(0,87,184,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,87,184,0.03) 1px, transparent 1px); background-size: 52px 52px; pointer-events: none; }
-        .section--alt { background: var(--bg2); }
-        .section--dark { background: var(--bg3); }
-        .section__inner { max-width: 1060px; margin: 0 auto; }
-        .sec-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange); display: block; margin-bottom: 10px; }
-        .sec-heading { font-family: 'Syne', sans-serif;    font-size: clamp(1.3rem, 3.5vw, 2.1rem) !important; font-weight: 800; letter-spacing: -0.025em; line-height: 1.15; color: var(--white); margin-bottom: 32px; }
-        .sec-heading em { font-style: normal; color: var(--orange); }
+    .partner-card__desc {
+        font-size: 0.92rem;
+        font-weight: 300;
+        color: var(--dim);
+        line-height: 1.7;
+        flex: 1;
+    }
 
-        /* ── STPI FEATURED PARTNER ── */
-        .partner-featured {
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            gap: 0;
-            background: rgba(0,20,55,0.45);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            overflow: hidden;
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
+    .partner-card__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 0.82rem;
+        font-weight: 500;
+        color: var(--orange);
+        transition: gap 0.25s, color 0.25s;
+        margin-top: 4px;
+    }
 
-        .partner-featured:hover {
-            box-shadow: 0 20px 56px rgba(0,0,0,0.35);
-        }
+    .partner-card:hover .partner-card__link { gap: 12px; }
+    .partner-card:hover .partner-card__link i { transform: translateX(3px); }
 
-        .partner-featured__left {
-            background: rgba(0,87,184,0.07);
-            border-right: 1px solid var(--border);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 48px 32px;
-            gap: 20px;
-        }
+    /* SCROLL REVEAL */
+    .sr { opacity: 0; transform: translateY(22px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+    .sr.sr--visible { opacity: 1; transform: translateY(0); }
+    .sr--d1 { transition-delay: 0.1s; }
+    .sr--d2 { transition-delay: 0.2s; }
+    .sr--d3 { transition-delay: 0.3s; }
 
-        /* logo placeholder box — swap with <img> when logo is available */
-        .partner-featured__logo-box {
-            width: 120px;
-            height: 120px;
-            border-radius: 20px;
-            background: rgba(0,87,184,0.12);
-            border: 1px solid rgba(0,87,184,0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            color: var(--blue);
-        }
-
-        .partner-featured__logo-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 16px;
-        }
-
-        .partner-featured__badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.65rem;
-            font-weight: 500;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--green);
-            border: 1px solid rgba(0,166,81,0.28);
-            background: rgba(0,166,81,0.06);
-            padding: 5px 12px;
-            border-radius: 100px;
-        }
-
-        .partner-featured__right {
-            padding: 48px 44px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 20px;
-            position: relative;
-        }
-
-        .partner-featured__right::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 2px;
-            background: linear-gradient(to right, var(--blue), var(--orange));
-        }
-
-        .partner-featured__name {
-            font-family: 'Syne', sans-serif;
-            font-size: 1.35rem;
-            font-weight: 800;
-            color: var(--white);
-            letter-spacing: -0.02em;
-            line-height: 1.2;
-        }
-
-        .partner-featured__fullname {
-            font-size: 0.8rem;
-            font-weight: 300;
-            color: var(--dimmer);
-            letter-spacing: 0.03em;
-            margin-top: -10px;
-        }
-
-        .partner-featured__desc {
-            font-size: 0.95rem;
-            font-weight: 300;
-            color: var(--dim);
-            line-height: 1.75;
-            max-width: 560px;
-        }
-
-        .partner-featured__tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .partner-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            padding: 6px 14px;
-            border-radius: 100px;
-            border: 1px solid var(--border);
-            background: rgba(0,87,184,0.05);
-            font-size: 0.76rem;
-            font-weight: 400;
-            color: var(--dim);
-        }
-
-        .partner-tag i { font-size: 0.68rem; color: var(--orange); }
-
-        .partner-featured__link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.82rem;
-            font-weight: 500;
-            color: var(--blue);
-            border: 1px solid rgba(0,87,184,0.28);
-            padding: 9px 18px;
-            border-radius: 100px;
-            width: fit-content;
-            transition: all 0.25s;
-        }
-
-        .partner-featured__link:hover {
-            border-color: var(--orange);
-            color: var(--orange);
-            background: rgba(255,140,0,0.05);
-        }
-
-        /* ADDITIONAL PARTNERS GRID */
-        .partners-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 8px;
-        }
-
-        .partner-card {
-            background: rgba(0,20,55,0.4);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 32px 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            transition: border-color 0.3s, transform 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-
-        .partner-card:hover {
-            transform: translateY(-4px);
-        }
-
-        .partner-card:hover::after { width: 100%; }
-
-        .partner-card__logo {
-            width: 52px; height: 52px;
-            border-radius: 12px;
-            background: rgba(0,87,184,0.1);
-            border: 1px solid rgba(0,87,184,0.22);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.1rem; color: var(--orange);
-        }
-
-        .partner-card__name {
-            font-family: 'Syne', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--white);
-            letter-spacing: -0.01em;
-        }
-
-        .partner-card__body {
-            font-size: 0.82rem;
-            font-weight: 300;
-            color: var(--dim);
-            line-height: 1.65;
-        }
-
-        /* SCROLL REVEAL */
-        .sr { opacity: 0; transform: translateY(22px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
-        .sr.sr--visible { opacity: 1; transform: translateY(0); }
-        .sr--d1 { transition-delay: 0.1s; }
-        .sr--d2 { transition-delay: 0.2s; }
-        .sr--d3 { transition-delay: 0.3s; }
-
-        @media (max-width: 860px) { .partner-featured { grid-template-columns: 1fr; } .partner-featured__left { border-right: none; border-bottom: 1px solid var(--border); } .partners-grid { grid-template-columns: 1fr 1fr; } }
-        @media (max-width: 540px) { .partners-grid { grid-template-columns: 1fr; } .section { padding: 60px 5%; } }
-    </style>
+    /* RESPONSIVE BREAKPOINTS */
+    @media (max-width: 768px) { 
+        .partners-grid { grid-template-columns: 1fr; gap: 24px; } 
+        .section { padding: 60px 0; } 
+        .partner-card { min-height: 0; padding: 28px 24px; } 
+    }
+</style>
 </head>
 <body>
 
@@ -269,68 +172,67 @@ cat > /mnt/user-data/outputs/partnerships.html << 'EOF'
 
 <div class="divider"></div>
 
-<!-- STPI FEATURED -->
+<!-- PARTNERS -->
 <section class="section">
     <div class="section__inner">
-        <span class="sec-label sr">Featured Partnership</span>
-        <h2 class="sec-heading sr sr--d1">Backed by <em>Government of India.</em></h2>
+        <span class="sec-label sr">Our Partnerships</span>
+        <h2 class="sec-heading sr sr--d1">Backed by an <em>ecosystem that delivers.</em></h2>
 
-        <div class="partner-featured sr sr--d2">
-            <div class="partner-featured__left">
-                <!-- swap the icon below with <img src="...stpi-logo.png"> when available -->
-                <div class="partner-featured__logo-box">
-                    <i class="fas fa-landmark"></i>
-                </div>
-                <div class="partner-featured__badge">
-                    <i class="fas fa-circle-check"></i> Active Partner
-                </div>
-            </div>
+        <div class="partners-grid">
 
-            <div class="partner-featured__right">
-                <div>
-                    <div class="partner-featured__name">Software Technology Parks of India</div>
+            <!-- STPI -->
+            <a href="https://www.stpi.in" target="_blank" rel="noopener noreferrer" class="partner-card sr sr--d1">
+                <div class="partner-card__logo-box">
+                     <img src="assets/images/stpi-logo.png" alt="STPI Logo">
                 </div>
-                <p class="partner-featured__desc">
+                <div class="partner-card__name">Software Technology Parks of India</div>
+                <p class="partner-card__desc">
                     Datamatrix.AI is a registered startup under the Software Technology Parks of India (STPI),
                     an autonomous body under the Ministry of Electronics &amp; Information Technology,
                     Government of India. STPI supports India's technology sector through infrastructure,
                     policy, and ecosystem development — and recognises Datamatrix.AI as part of its
                     cohort of enterprise AI innovators driving India's digital transformation.
                 </p>
-                <div class="partner-featured__tags">
-                    <span class="partner-tag"><i class="fas fa-circle-dot"></i> Government of India</span>
-                    <span class="partner-tag"><i class="fas fa-circle-dot"></i> MeitY</span>
-                    <span class="partner-tag"><i class="fas fa-circle-dot"></i> Registered Startup</span>
-                    <span class="partner-tag"><i class="fas fa-circle-dot"></i> India Stack</span>
+                <div class="partner-card__link">
+                    Learn More <i class="fas fa-arrow-right"></i>
                 </div>
-                <a href="https://www.stpi.in" target="_blank" rel="noopener noreferrer" class="partner-featured__link">
-                    Visit STPI <i class="fas fa-arrow-up-right-from-square"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
+            </a>
 
+            <!-- BharatNetra FinTech CoE -->
+            <a href="https://odisha.gftn.co/startupprogrammes" target="_blank" rel="noopener noreferrer" class="partner-card sr sr--d2">
+                <div class="partner-card__logo-box">
+                    <img src="assets/images/bharatnetra-logo.png" alt="BharatNetra Logo">
+                </div>
+                <div class="partner-card__name">BharatNetra FinTech Centre of Excellence</div>
+                <p class="partner-card__desc">
+                    The Centre of Excellence (CoE) at the Odisha Technology Centre in Bhubaneswar is the heart
+                    of the BharatNetra Innovation Hub. Dedicated to driving digital transformation, the CoE
+                    provides a high-velocity environment where FinTech and InsurTech ventures receive
+                    structured incubation, mentorship, and a direct pathway to market readiness and global access.
+                </p>
+                <div class="partner-card__link">
+                    Learn More <i class="fas fa-arrow-right"></i>
+                </div>
+            </a>
 
-<!-- MORE PARTNERS -->
-<section class="section section--alt">
-    <div class="section__inner">
-        <span class="sec-label sr">More Partners</span>
-        <h2 class="sec-heading sr sr--d1">Growing our <em>ecosystem.</em></h2>
+            <!-- ITEL Foundation -->
+            <a href="https://itelfoundation.in" target="_blank" rel="noopener noreferrer" class="partner-card sr sr--d3">
+                <div class="partner-card__logo-box partner-card__logo-box--itel">
+                    <img src="assets/images/itel-logo.png" alt="ITEL Foundation Logo">
+                </div>
+                <div class="partner-card__name">ITEL Foundation</div>
+                <p class="partner-card__desc">
+                    Datamatrix.AI has been selected for incubation at the Immersive Technology and
+                    Entrepreneurship Labs (ITEL) Foundation — a non-profit built on the premise that
+                    India's unique challenges of high population density and low household incomes
+                    can propel it to the forefront of global technology innovation, positioning India
+                    as an exporter of technology leadership, not just an importer.
+                </p>
+                <div class="partner-card__link">
+                    Learn More <i class="fas fa-arrow-right"></i>
+                </div>
+            </a>
 
-        <div class="partners-grid">
-            <div class="partner-card sr sr--d1">
-                <div class="partner-card__name"></div>
-                <div class="partner-card__body"></div>
-            </div>
-            <div class="partner-card sr sr--d1">
-                <div class="partner-card__name"></div>
-                <div class="partner-card__body"></div>
-            </div>
-            <div class="partner-card sr sr--d1">
-                <div class="partner-card__name"></div>
-                <div class="partner-card__body"></div>
-            </div>
         </div>
     </div>
 </section>
@@ -345,6 +247,6 @@ cat > /mnt/user-data/outputs/partnerships.html << 'EOF'
 })();
 </script>
 <script src="js/nav-inject.js"></script>
-     <script src="js/nav.js"></script>
+<script src="js/nav.js"></script>
 </body>
 </html>
